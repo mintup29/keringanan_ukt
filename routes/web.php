@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing-page');
 });
+Route::get('/login', function(){
+    return view('sso');
+});
+Route::get('/pengajuan', function(){
+    return view('user/user1');
+});
+Route::get('/kuesioner', function(){
+    return view('user/kuesioner');
+});
