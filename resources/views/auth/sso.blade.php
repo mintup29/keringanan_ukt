@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <div class="col-xs-4">
-                            <button type="button" class="btn btn-primary btn-block btn-flat" tabindex="4"><a href="/kuesioner" style="color:white;">Masuk</a></button>
+                            <button type="button" class="btn btn-primary btn-block btn-flat" tabindex="4"><a href="/admin-setting" style="color:white;">Masuk</a></button>
                         </div>
                     </div>
                 </form>
