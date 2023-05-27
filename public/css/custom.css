@@ -108,3 +108,11 @@ table.rounded-corners tr{
     background-color: white;
     box-shadow: 0px 3px lightgray;
 }
+
+.box{
+    position: absolute;
+    width: 1117px;
+    height: 946px;
+    left: 795px;
+    top: 134px;
+}
