@@ -28,3 +28,7 @@ Route::get('/pengajuan_2', function(){
 Route::get('/kuesioner', function(){
     return view('user/kuesioner');
 });
+
+Route::get('/admin-setting', function(){
+    return view('admin/dashboard_admin_setting');
+});
