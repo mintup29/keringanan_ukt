@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('landing-page');
 });
 Route::get('/login', function(){
-    return view('sso');
+    return view('auth/sso');
 });
 Route::get('/pengajuan', function(){
     return view('user/user1');
@@ -27,10 +27,4 @@ Route::get('/pengajuan_2', function(){
 });
 Route::get('/kuesioner', function(){
     return view('user/kuesioner');
-});
-Route::get('/navbar1', function(){
-    return view('user/template_1');
-});
-Route::get('/navbar2', function(){
-    return view('user/template_2');
 });
