@@ -32,3 +32,7 @@ Route::get('/kuesioner', function(){
 Route::get('/admin-setting', function(){
     return view('admin/dashboard_admin_setting');
 });
+
+Route::get('/admin', function(){
+    return view('admin/dashboard_admin');
+});
