@@ -25,3 +25,9 @@ Route::get('/pengajuan', function(){
 Route::get('/kuesioner', function(){
     return view('user/kuesioner');
 });
+Route::get('/navbar1', function(){
+    return view('user/template_1'); 
+});
+Route::get('/navbar2', function(){
+    return view('user/template_2'); 
+});
