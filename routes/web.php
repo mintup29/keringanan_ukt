@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PengajuanMahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,8 @@ Route::get('/admin-setting', function(){
 Route::get('/admin', function(){
     return view('admin/dashboard_admin');
 });
+
+Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('pengajuan.index');
+Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('pengajuan.update-action');
+
+Route::get('/getPengajuan', [\App\Http\Controllers\PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');

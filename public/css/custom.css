@@ -124,13 +124,26 @@ table.rounded-corners tr {
 .blue-box {
     background-color: blue;
     color: white;
-    width: 150px;
-    height: 40px;
+    width: 100px;
     text-align: center;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+}
+
+.red-box {
+    background-color: red;
+    color: white;
+    width: 100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.green-box {
+    background-color: green;
+    color: white;
+    width: 100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
