@@ -10,22 +10,27 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="/css/custom.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="/js/custom.js"></script>
+</head>
+
+<body>
     <!-- start navbar -->
+    
     <nav class="navbar fixed-top navbar-custom">
         <span onclick="toggleSidenav()"><i class="fa fa-bars"></i></span>
         <img class="rounded ml-auto" alt="profile picture" src="https://pkptki.lppm.uns.ac.id/wp-content/uploads/sites/12/2022/04/Haryono-Setiadi-ST.-M.Eng_-234x300.jpg" />
-        <a>Haryono</a>
+        <a>Haryono Haryono Haryono Haryono</a>
     </nav>
-
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="#" style="margin-top: 200%"><i class="fa fa-home"></i><p>Home</p></a>
         <a href="#"><i class="fa fa-gear"></i><p>Settings</p></a>
     </div>
-    <!-- end navbar -->
-</head>
 
-<body>
+    <!-- end navbar -->
     @yield('content2')
 </body>
 

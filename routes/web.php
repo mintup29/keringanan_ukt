@@ -36,3 +36,7 @@ Route::get('/admin-setting', function(){
 Route::get('/admin', function(){
     return view('admin/dashboard_admin');
 });
+
+Route::get('/setting-jawaban', function(){
+    return view('admin/setting_jawaban_admin');
+});
