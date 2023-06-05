@@ -22,9 +22,21 @@ Route::get('/login', function(){
 Route::get('/pengajuan', function(){
     return view('user/user1');
 });
+Route::get('/pengajuan_2', function(){
+    return view('user/user2');
+});
 Route::get('/kuesioner', function(){
     return view('user/kuesioner');
 });
+
 Route::get('/admin-setting', function(){
     return view('admin/dashboard_admin_setting');
+});
+
+Route::get('/admin', function(){
+    return view('admin/dashboard_admin');
+});
+
+Route::get('/setting-jawaban', function(){
+    return view('admin/setting_jawaban_admin');
 });
