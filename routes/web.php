@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,21 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['middleware' => 'guest'], function(){
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
+});
+
 Route::get('/', function () {
     return view('landing-page');
 });
-Route::get('/login', function(){
-    return view('sso');
-});
-Route::get('/pengajuan', function(){
-    return view('user/user1');
-});
+Route::get('/pengajuan', 'UserController@userDashboard');
 Route::get('/kuesioner', function(){
     return view('user/kuesioner');
-});
-Route::get('/navbar1', function(){
-    return view('user/template_1'); 
-});
-Route::get('/navbar2', function(){
-    return view('user/template_2'); 
 });

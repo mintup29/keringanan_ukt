@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pengajuan Keringanan UKT</title>
-
     <link href="/css/styles.css" rel="stylesheet" />
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,12 +8,6 @@
         <a>Haryono</a>
     </nav>
     <!-- end navbar -->
-</head>
 
-<body>
-    <div></div>
-</body>
-
-<script type="text/javascript" src="/js/bootstrap.js"></script>
-
-</html>
+    <!-- add this at the footer -->
+    <!-- <script type="text/javascript" src="/js/bootstrap.js"></script> -->
