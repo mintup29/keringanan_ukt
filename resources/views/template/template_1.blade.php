@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    @yield('content1')
+@yield(    'content1')
 </body>
 
 <script type="text/javascript" src="/js/bootstrap.js"></script>

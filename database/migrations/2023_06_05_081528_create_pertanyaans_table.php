@@ -16,8 +16,24 @@ return new class extends Migration
             $table->text('pertanyaan');
             $table->timestamps();
         });
-    }
 
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Berapa nominal UKT Anda?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Apakah orang tua (bapak dan ibu) Anda masih lengkap atau tidak?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Apakah pekerjaan orang tua Anda? Jika PNS, apa pangkat dan golongannya?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Apakah kedua orang tua bekerja?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Jika hanya salah satu, siapa yang bekerja?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Berapa total pendapatan orang tua (ayah + ibu) saat ini?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Berapa jumlah anak dalam keluarga Anda?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Anak keberapakah Anda?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Berapa jumlah anggota keluarga yang menjadi tanggungan orang tua saat ini?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Jelaskan status Saudara anda (menikah ataukah belum) dan jenjang pendidikan saudara anda yang menjadi tanggungan orang tua?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Status kepemilikan rumah']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Deskripsikan kondisi rumah Saudara (misal tembok permanen/semi permanen, lantai keramik/tidak, Luas tanah/bangunan)']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Biaya listrik per bulan']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Berapa jumlah kendaraan yang dimiliki orang tua/keluarga?']);
+        DB::table('pertanyaans')->insert(['pertanyaan' => 'Foto rumah Anda']);
+    }
+    
     /**
      * Reverse the migrations.
      */
