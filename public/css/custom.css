@@ -88,14 +88,10 @@ body {
 }
 html,
 body {
-    height: 100vh;
-<<<<<<< HEAD
+    /* height: 100vh; */
     height:100%;
     margin-right:15px;
     margin-left:15px;
-=======
-    height: 100%;
->>>>>>> a2a272dbd0b88d2d5e0ba3b0931795c871a5da7b
 }
 
 .row {
@@ -120,7 +116,6 @@ table.rounded-corners {
 }
 table.rounded-corners tr {
     background-color: white;
-<<<<<<< HEAD
     box-shadow: 0px 3px lightgray;
 }
 .header-kuesioner{
@@ -150,17 +145,6 @@ table.rounded-corners tr {
     text-align: justify;
     text-justify: inter-word;
 }
-=======
-    box-shadow: 0px 3px rgb(255, 255, 255);
-}
-
-.box {
-    position: absolute;
-    width: 1117px;
-    height: 946px;
-    left: 795px;
-    top: 134px;
-}
 
 .blue-box {
     background-color: blue;
@@ -188,4 +172,3 @@ table.rounded-corners tr {
     justify-content: center;
     align-items: center;
 }
->>>>>>> a2a272dbd0b88d2d5e0ba3b0931795c871a5da7b

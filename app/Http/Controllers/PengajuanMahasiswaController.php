@@ -16,14 +16,22 @@ class PengajuanMahasiswaController extends Controller
      */
     public function index(Request $request)
     {
-        
-        
         if ($request->ajax()) {
-            $data = PengajuanMahasiswa::select('*');
+            $data = PengajuanMahasiswa::join('mahasiswa', 'pengajuan_mahasiswa.id_mahasiswa', '=', 'mahasiswa.id')
+                ->join('jawaban_mahasiswa', 'jawaban_mahasiswa.id_pengajuan_mhs', '=', 'pengajuan_mahasiswa.id')
+                ->select('*');
+            // $data = PengajuanMahasiswa::select('*');
+            // $data = PengajuanMahasiswa::with('mahasiswa')->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function ($item) {
                         return view('admin.actions', compact('item'));
+                    })
+                    ->addColumn('nim', function ($nim) {
+                        return $nim->mahasiswa->nim;
+                    })
+                    ->addColumn('nama', function ($nama) {
+                        return $nama->mahasiswa->nama;
                     })
                     ->filter(function ($instance) use ($request) {
                         if ($request->get('status') == 'Need Action' || $request->get('status') == 'Accepted' || $request->get('status') == 'Rejected') {
@@ -32,11 +40,12 @@ class PengajuanMahasiswaController extends Controller
                         if (!empty($request->get('search'))) {
                              $instance->where(function($w) use($request){
                                 $search = $request->get('search');
-                                $w->orWhere('nama_mahasiswa', 'LIKE', "%$search%")
+                                $w->orWhere('nama', 'LIKE', "%$search%")
                                 ->orWhere('nim', 'LIKE', "%$search%");
                             });
                         }
                     })
+                    // ->rawColumns(['action', 'nim','nama'])
                     ->rawColumns(['action'])
                     ->make(true);
         }

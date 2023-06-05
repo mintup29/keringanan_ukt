@@ -9,7 +9,15 @@ class PengajuanMahasiswa extends Model
 {
     protected $table = 'pengajuan_mahasiswa';
     protected $fillable = [
-      'tgl_pengajuan', 'nim','nama_mahasiswa','skor', 'status'
+      'skor_total', 'status'
     ];
+    
+    public function mahasiswa()
+    {
+        return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
+    }
+
+    
+
     use HasFactory;
 }

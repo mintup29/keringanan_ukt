@@ -13,17 +13,13 @@ return new class extends Migration
     {
         Schema::create('pengajuan_mahasiswa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_mahasiswa')->comment('relasi ke tabel mahasiswa');
-            $table->timestamp('tgl_pengajuan')->nullable();
-            $table->string('nim');
-            $table->string('nama_mahasiswa');
-            $table->integer('skor');
+            $table->foreignId('id_mahasiswa')->constrained('mahasiswa')->comment('relasi ke tabel mahasiswa');
+            // $table->foreignId('id_pertanyaan')->constrained('pertanyaans')->comment('relasi ke tabel pertanyaan');
+            // $table->foreignId('id_jawaban')->constrained('jawabans')->comment('relasi ke tabel jawaban');
             $table->string('status');
-            $table->integer('skor_1');
-            $table->integer('skor_2');
-            $table->integer('skor_3');
-            $table->integer('skor_4');
-
+            // $table->integer('skor_total');
+            $table->integer('semester');
+            $table->year('tahun');
             $table->timestamps();
         });
     }

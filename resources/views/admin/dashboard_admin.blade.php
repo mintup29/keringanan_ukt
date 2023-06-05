@@ -55,7 +55,6 @@
         <table class="table user_datatable">
             <thead>
                 <tr>
-                    <th>Tanggal Pengajuan</th>
                     <th>NIM</th>
                     <th>Nama Mahasiswa</th>
                     <th>Skor</th>
@@ -113,20 +112,19 @@
                 }
             },
             columns: [
-                {data: 'tgl_pengajuan', name: 'tgl_pengajuan'},
                 {data: 'nim', name: 'nim'},
-                {data: 'nama_mahasiswa', name: 'nama_mahasiswa'},
-                {data: 'skor', name: 'skor'},
+                {data: 'nama', name: 'nama'},
+                {data: 'skor_total', name: 'skor_total'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             createdRow: function (row, data, index) {
                 if (data['status'] == 'Need Action') {
-                    $('td', row).eq(4).addClass('blue-box');
+                    $('td', row).eq(3).addClass('blue-box');
                 } else if (data['status'] == 'Accepted') {
-                    $('td', row).eq(4).addClass('green-box');
+                    $('td', row).eq(3).addClass('green-box');
                 } else if (data['status'] == 'Rejected') {
-                    $('td', row).eq(4).addClass('red-box');
+                    $('td', row).eq(3).addClass('red-box');
                 } 
             },
         });
