@@ -25,14 +25,12 @@ Route::get('/pengajuan', function(){
 Route::get('/kuesioner', function(){
     return view('user/kuesioner');
 });
-<<<<<<< HEAD
 Route::get('/navbar1', function(){
     return view('user/template_1'); 
 });
 Route::get('/navbar2', function(){
-    return view('user/template_2'); 
-=======
+    return view('user/template_2');
+}); 
 Route::get('/admin-setting', function(){
     return view('admin/dashboard_admin_setting');
->>>>>>> 795e88cb6c79307d5ed95f8204d4b4bc071d74c9
 });
