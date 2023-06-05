@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mahasiswa', function (Blueprint $table) {
+        Schema::create('pengajuan_mahasiswa', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('tgl_pengajuan');
             $table->string('nim');
-            $table->string('nama');
-            $table->string('prodi');
+            $table->string('nama_mahasiswa');
             $table->integer('semester');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->integer('skor');
+            $table->integer('status');
+            $table->integer('skor_1');
+            $table->integer('skor_2');
+            $table->integer('skor_3');
+            $table->integer('skor_4');
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mahasiswa');
+        Schema::dropIfExists('pengajuan_mahasiswa');
     }
 };

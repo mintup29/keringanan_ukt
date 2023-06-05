@@ -95,16 +95,45 @@ html,body{
     margin: auto;
     margin-top: 20px;
     padding: 5px 0px;
-    font-family: 'Poppins';
 }
 
 table.rounded-corners {
     margin-top: 50px;
     border-spacing: 0px 10px;
     border-collapse: separate;
-
+    font-size: 15px;
   }
 table.rounded-corners tr{
     background-color: white;
     box-shadow: 0px 3px lightgray;
+}
+
+.status-p{
+    text-align: center;
+    color: white;
+    display: inline-block;
+    border-radius: 25px;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+.status-p.p-processing{
+    background-color: #1096CF;
+}
+.status-p.p-approved{
+    background-color: #30C00C;
+}
+.status-p.p-rejected{
+    background-color: #F80606;
+}
+.btn-detail{
+    border: none;
+    padding: 4px 18px;
+    border-radius: 5%;
+    background-color: #F1D644;
+    font-size: 13px !important;
+    color: black;
+    margin: 0px;
+}
+.btn-detail:hover{
+    background-color: #FFEA7E ;
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\MhsController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -15,15 +15,15 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::group(['middleware' => 'guest'], function(){
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
-});
+// Route::group(['middleware' => 'guest'], function(){
+//     Route::get('/login', [AuthController::class, 'login'])->name('login');
+//     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
+// });
 
 Route::get('/', function () {
     return view('landing-page');
 });
-Route::get('/pengajuan', 'UserController@userDashboard');
+Route::get('/pengajuan', [MhsController::class, 'mhsDashboard'])->name('pengajuan');
 Route::get('/kuesioner', function(){
     return view('user/kuesioner');
 });
