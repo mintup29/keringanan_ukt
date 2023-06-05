@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('pertanyaans', function (Blueprint $table) {
             $table->id();
             $table->text('pertanyaan');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
         DB::table('pertanyaans')->insert(['pertanyaan' => 'Berapa nominal UKT Anda?']);
@@ -33,7 +34,7 @@ return new class extends Migration
         DB::table('pertanyaans')->insert(['pertanyaan' => 'Berapa jumlah kendaraan yang dimiliki orang tua/keluarga?']);
         DB::table('pertanyaans')->insert(['pertanyaan' => 'Foto rumah Anda']);
     }
-    
+
     /**
      * Reverse the migrations.
      */
