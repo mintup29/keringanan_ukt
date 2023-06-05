@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('skors', function (Blueprint $table) {
             $table->id();
-            $table->foreign('id_pertanyaan')->references('id')->on('pertanyaans');
-            $table->foreign('id_jawaban')->references('id')->on('jawabans');
+            $table->foreignId('id_pertanyaan')->constrained('pertanyaans');
+            $table->foreignId('id_jawaban')->constrained('jawabans');
             $table->integer('skor');
             $table->timestamps();
         });
