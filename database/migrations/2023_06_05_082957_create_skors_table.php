@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('skors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_pertanyaan')->constrained('pertanyaans');
+            $table->foreignId('id_jawaban')->constrained('jawabans');
+            $table->integer('skor');
             $table->timestamps();
         });
     }

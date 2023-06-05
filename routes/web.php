@@ -28,16 +28,6 @@ Route::get('/pengajuan_2', function(){
 Route::get('/kuesioner', function(){
     return view('user/kuesioner');
 });
-<<<<<<< HEAD
-Route::get('/navbar1', function(){
-    return view('user/template_1'); 
-});
-Route::get('/navbar2', function(){
-    return view('user/template_2');
-}); 
-Route::get('/admin-setting', function(){
-    return view('admin/dashboard_admin_setting');
-=======
 
 Route::get('/admin-setting', function(){
     return view('admin/dashboard_admin_setting');
@@ -49,5 +39,4 @@ Route::get('/admin', function(){
 
 Route::get('/setting-jawaban', function(){
     return view('admin/setting_jawaban_admin');
->>>>>>> a2a272dbd0b88d2d5e0ba3b0931795c871a5da7b
 });
