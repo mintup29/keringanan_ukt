@@ -88,14 +88,10 @@ body {
 }
 html,
 body {
-    height: 100vh;
-<<<<<<< HEAD
+    /* height: 100vh; */
     height:100%;
     margin-right:15px;
     margin-left:15px;
-=======
-    height: 100%;
->>>>>>> a2a272dbd0b88d2d5e0ba3b0931795c871a5da7b
 }
 
 .row {
@@ -120,7 +116,6 @@ table.rounded-corners {
 }
 table.rounded-corners tr {
     background-color: white;
-<<<<<<< HEAD
     box-shadow: 0px 3px lightgray;
 }
 .header-kuesioner{
@@ -150,58 +145,30 @@ table.rounded-corners tr {
     text-align: justify;
     text-justify: inter-word;
 }
-=======
-    box-shadow: 0px 3px rgb(255, 255, 255);
-}
-
-.box {
-    position: absolute;
-    width: 1117px;
-    height: 946px;
-    left: 795px;
-    top: 134px;
-}
 
 .blue-box {
     background-color: blue;
     color: white;
-    width: 150px;
-    height: 40px;
+    width: 100px;
     text-align: center;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
 }
 
-.border-collapse {
-    border-collapse: separate;
-    border-spacing: 0 15px;
-}
-
-i.fa-pencil,
-i.fa-trash {
-    font-size: 23px;
+.red-box {
+    background-color: red;
     color: white;
+    width: 100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.btn-font {
-    font-size: 15px;
+.green-box {
+    background-color: green;
+    color: white;
+    width: 100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
-
-@media screen and (max-width: 576px) {
-    .div-title-admin h2 {
-        font-size: 20px;
-        font-weight: bold;
-    }
-    img.rounded {
-        height: 40px;
-        width: 40px;
-    }
-    .navbar a {
-        display: none;
-    }
-}
->>>>>>> a2a272dbd0b88d2d5e0ba3b0931795c871a5da7b
