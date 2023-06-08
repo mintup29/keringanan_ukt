@@ -28,7 +28,7 @@
                 <option value="3">Three</option>
             </select>
         </div>
-        <form action="">
+        <form action="{{ url('tambah-pertanyaan') }}" method="POST">
             @foreach ($pertanyaan as $item)
             <div class="row my-4">
                 <div class="col-lg-8 offset-lg-2 shadow rounded-3" style="background-color: white;">
@@ -40,9 +40,9 @@
                     <div class="row">
                         <div class="col-12 mx-2 my-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
                                 @foreach ($item->jawaban as $jawaban)
+                                <input class="form-check-input" type="radio" name={{ $jawaban->id }} id={{ $jawaban->id }}>
+                                <label class="form-check-label" for={{ $jawaban->id }}>
                                     <p>{{$jawaban->jawaban}}</p>
                                 @endforeach
                                 </label>
