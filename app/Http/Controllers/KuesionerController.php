@@ -21,7 +21,7 @@ class KuesionerController extends Controller
     //     return Jawaban::all();
     // }
     public function index(){
-        $pertanyaans = Pertanyaan::with('jawaban')->get();
-        return View::make('user.kuesioner')->with('pertanyaan', $pertanyaans); //return the view with posts
+        $pertanyaan = Pertanyaan::with('jawaban','skor')->get();
+        return View::make('user.kuesioner')->with('pertanyaan', $pertanyaan); //return the view with posts
     }
 }
