@@ -70,7 +70,6 @@
       </div>
     </div>
 
-    <!-- Awal Form -->
     <!-- Button Tambah Pertanyaan -->
     <div class="row">
       <div class="d-flex mt-4 justify-content-end" > 
@@ -99,7 +98,7 @@
                   <tr class="shadow-sm" style="background-color:#EBF2FC">
                     <!-- Isi Pertanyaan -->
                       <td class="p-3">
-                        <a href="/setting-jawaban/{{ $pertanyaan->id }}" style="font-size:15px">
+                        <a href="{{ url('setting-jawaban/'.$pertanyaan->id) }}" style="font-size:15px">
                           {{ $pertanyaan->pertanyaan }}
                         </a>
                       </td>       
@@ -135,9 +134,13 @@
                       <button type="button" class="btn btn-primary col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3" onclick="window.location='/setting-jawaban'">
                         <i class="fa fa-pencil" style="font-size: 20px"></i>        
                       </button>
-                      <button type="button" class="btn btn-danger col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3">
-                        <i class="fa fa-trash" style="font-size: 20px"></i>
-                      </button>  
+                      <form method="post" action="{{ route('pertanyaans.destroy', $pertanyaan->id) }}">
+                          @method('delete')
+                          @csrf
+                          <button type="submit" class="btn btn-danger col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3">
+                            <i class="fa fa-trash" style="font-size: 20px"></i>
+                          </button>  
+                      </form>
                     </td>
                   </tr>  
                 @empty

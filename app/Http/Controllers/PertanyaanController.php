@@ -48,11 +48,11 @@ class PertanyaanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pertanyaan $pertanyaan)
+    public function show(Pertanyaan $id)
     {
-        return view('admin.setting_jawaban_admin',[
-            'pertanyaan'=>$pertanyaan,
-        ]);
+        $pertanyaan = Pertanyaan::with('jawaban', 'skor')->find($id);
+        //return view('admin.setting_jawaban_admin')->with($pertanyaan);
+        return View::make('admin.setting_jawaban_admin')->with('pertanyaan', $pertanyaan); //return the view with posts
     }
 
     /**
