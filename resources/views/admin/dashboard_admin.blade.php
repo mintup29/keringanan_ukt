@@ -75,7 +75,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table">
+                    <!-- <table class="table">
                         <tr>
                            <td>NIM</td>
                         </tr>
@@ -88,7 +88,7 @@
                         <tr>
                             <td>LAIN LAIN</td>                    
                         </tr>
-                    </table>
+                    </table> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

@@ -29,11 +29,12 @@
             </select>
         </div>
         <form action="">
+            @foreach ($pertanyaans as $item)
             <div class="row my-4">
                 <div class="col-lg-8 offset-lg-2 shadow rounded-3" style="background-color: white;">
                     <div class="row">
                         <div class="col-12 mx-2 mt-1">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, reprehenderit.
+                            <p>{{$item -> pertanyaan}}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -41,19 +42,16 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
-                                    Pilihan 1
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Pilihan 2
+                                @foreach ($pertanyaans->jawaban as $jawaban)
+                                <p>{{$jawaban -> jawaban}}</p>
+                                @endforeach
                                 </label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
             <div class="row">
                 <button class="btn btn-primary rounded-4 col-lg-2 col-sm-4 offset-lg-8 offset-sm-4 my-3" type="button" style="font-style: Poppins; font-weight:bold;">Submit</button>
             </div>

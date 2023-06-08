@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PengajuanMahasiswaController;
 use App\Http\Controllers\PertanyaanController;
+use App\Http\Controllers\KuesionerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,10 @@ Route::get('/pengajuan', function(){
 Route::get('/pengajuan_2', function(){
     return view('user/user2');
 });
-Route::get('/kuesioner', function(){
-    return view('user/kuesioner');
-});
+// Route::get('/kuesioner', function(){
+//     return view('user/kuesioner');   
+// });
+Route::get('/kuesioner', [KuesionerController::class, 'index']);
 
 Route::get('/admin-setting', function(){
     return view('admin/dashboard_admin_setting');
