@@ -134,7 +134,7 @@
                       <button type="button" class="btn btn-primary col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3" onclick="window.location='/setting-jawaban'">
                         <i class="fa fa-pencil" style="font-size: 20px"></i>        
                       </button>
-                      <form method="post" action="{{ route('pertanyaans.destroy', $pertanyaan->id) }}">
+                      <form method="post" action="">
                           @method('delete')
                           @csrf
                           <button type="submit" class="btn btn-danger col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3">
