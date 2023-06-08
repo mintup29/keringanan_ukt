@@ -14,7 +14,7 @@
           <p style="font-weight: 500">Pertanyaan Anda</p>
           <div class="row">
             <div class="col-12">
-                <p>halo deck</p>
+                <p>{{$pertanyaan->pertanyaan}}</p>
             </div>
           </div>
         </div>
