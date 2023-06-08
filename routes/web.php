@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PengajuanMahasiswaController;
+use App\Http\Controllers\KuesionerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +27,10 @@ Route::get('/pengajuan', function(){
 Route::get('/pengajuan_2', function(){
     return view('user/user2');
 });
-Route::get('/kuesioner', function(){
-    return view('user/kuesioner');
-});
+// Route::get('/kuesioner', function(){
+//     return view('user/kuesioner');   
+// });
+Route::get('/kuesioner', [KuesionerController::class, 'index']);
 
 Route::get('/admin-setting', function(){
     return view('admin/dashboard_admin_setting');
@@ -37,6 +40,7 @@ Route::get('/admin', function(){
     return view('admin/dashboard_admin');
 });
 
-Route::get('/setting-jawaban', function(){
-    return view('admin/setting_jawaban_admin');
-});
+Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('pengajuan.index');
+Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('pengajuan.update-action');
+
+Route::get('/getPengajuan', [\App\Http\Controllers\PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');

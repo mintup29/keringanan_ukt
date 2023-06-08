@@ -36,25 +36,29 @@
               <tbody style="font-size:14px">
                 <tr class="shadow-sm" style="background-color:white">
                   <!-- Isi Pertanyaan -->
-                  <td class="p-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni in itaque iure cupiditate et soluta nesciunt quia alias facere recusandae illo, obcaecati temporibus impedit fuga? Quasi repudiandae magni aspernatur. Illum?</td>
+                  <td class="p-3">
+                    <a href="/setting-jawaban">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni in itaque iure cupiditate et soluta nesciunt quia alias facere recusandae illo, obcaecati temporibus impedit fuga? Quasi repudiandae magni aspernatur. Illum?
+                    </a> 
+                  </td>
                   
                   <!-- Isi Jawaban-->
                   <td class="p-3 fw-bold">
                     <div class="input-group input-group-sm my-lg-1 col-sm-12 justify-content-center">
-                      <input type="text" class="form-control col-lg-9" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                      <p>ayam</p>
                     </div>
                   </td>
 
                   <!-- Isi Skor-->
                   <td class="p-3 fw-bold">
                     <div class="input-group input-group-sm my-lg-1 col-sm-12 justify-content-center">
-                      <input type="text" class="form-control col-lg-3 mx-1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">                      
+                      <p>60</p>                      
                     </div>
                   </td>
             
                   <!-- Button Edit dan Hapus pertanyaan -->
                   <td class="p-lg-3 p-sm-3 text-center">
-                    <button type="button" class="btn btn-primary col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3" onclick="window.location='{{ url("setting-jawaban") }}'">
+                    <button type="button" class="btn btn-primary col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3" onclick="window.location='{{ url("setting-jawaban")}}'">
                       <i class="fa fa-pencil" style="font-size: 20px"></i>
                     </button>
                     <button type="button" class="btn btn-danger col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3">
