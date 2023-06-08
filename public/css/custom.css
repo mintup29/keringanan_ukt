@@ -6,17 +6,17 @@ i.fa-bars{
     color: white;
     cursor: pointer;
 }
-.navbar.fixed-top.navbar-custom a{
-    margin-left: 20px;
-    margin-right: 30px;
-    color: white;
+.btn-primary{
+    background-color: #3BAFDA;
+    border: none;
 }
 img.rounded {
     object-fit: cover;
+    margin: 0px 10px;
     border-radius: 50% !important;
     height: 50px;
     width: 50px;
-    border: 2px solid white;
+    border: 5px solid white;
 }
 
 img.rounded-big {

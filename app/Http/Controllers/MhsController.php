@@ -12,6 +12,6 @@ class MhsController extends Controller
     public function mhsDashboard(){
         $nim_mhs = "M05XX000";
         $pengajuan = DB::select('select tgl_pengajuan, semester, status from pengajuan_mahasiswa where nim="'.$nim_mhs.'"');
-        return view('user.user1',['pengajuan'=>$pengajuan]); 
+        return view('user.profil',['pengajuan'=>$pengajuan]); 
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pengajuan Keringanan UKT</title>
-    @include('user.navbar1')
+    @include('user.navbar2')
 </head>
 
 <body>
@@ -13,6 +13,7 @@
         <img class="rounded-big ml-auto shadow" alt="profile picture" src="https://pkptki.lppm.uns.ac.id/wp-content/uploads/sites/12/2022/04/Haryono-Setiadi-ST.-M.Eng_-234x300.jpg" /><br>
         <div class="profile-text shadow">Haryono</div>
         <div class="profile-text shadow">Informatika</div>
+        
     </div>
     <div class="container col-lg-7 shadow" >
         @if(!empty($pengajuan))
@@ -47,8 +48,9 @@
         @endif
     </div>
     </div>
+
 </body>
-
-<script type="text/javascript" src="/js/bootstrap.js"></script>
-
+    <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </html>
