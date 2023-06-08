@@ -10,9 +10,10 @@
     @elseif ($item->status == 'Need Action')
         <button onclick="updateAction('{{ $item->id }}', 'Accepted')" class="btn btn-success col-md-3"><i class="fa fa-check"></i></button>
         <button onclick="updateAction('{{ $item->id }}', 'Rejected')" class="btn btn-danger col-md-3"><i class="fa fa-close"></i></button>
-        <button class="btn btn-info col-md-3" data-toggle="modal" data-target="#detailModal">
-            <i class="fa fa-eye"></i>
-        </button>
+        <a href="items/{{ $item->id }}" target="_blank">
+            <button class="btn btn-info col-md-3"><i class="fa fa-eye"></i></button>
+        </a>
+        
     @endif
 </div>
 

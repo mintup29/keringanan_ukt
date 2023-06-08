@@ -41,4 +41,6 @@ Route::get('/admin', function(){
 Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('pengajuan.index');
 Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('pengajuan.update-action');
 
+Route::get('items/{id}', [PengajuanMahasiswaController::class, 'show'])->name('items.show');
+
 Route::get('/getPengajuan', [\App\Http\Controllers\PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');
