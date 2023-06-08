@@ -17,7 +17,7 @@ return new class extends Migration
             // $table->foreignId('id_pertanyaan')->constrained('pertanyaans')->comment('relasi ke tabel pertanyaan');
             // $table->foreignId('id_jawaban')->constrained('jawabans')->comment('relasi ke tabel jawaban');
             $table->string('status');
-            // $table->integer('skor_total');
+            $table->integer('skor_total');
             $table->integer('semester');
             $table->year('tahun');
             $table->timestamps();

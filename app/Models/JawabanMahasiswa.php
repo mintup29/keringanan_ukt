@@ -9,7 +9,7 @@ class JawabanMahasiswa extends Model
 {
     public function jawaban_mahasiswa()
     {
-        return $this->belongsTo(PengajuanMahasiswa::class, 'id_pengajuan_mhs');
+        return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
     }
     
     use HasFactory;
