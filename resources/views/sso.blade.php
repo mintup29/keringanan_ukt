@@ -73,11 +73,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-4">
-<<<<<<<< HEAD:resources/views/auth/sso.blade.php
-                            <button type="button" class="btn btn-primary btn-block btn-flat" tabindex="4"><a href="/pengajuan" style="color:white;">Masuk</a></button>
-========
                             <button class="btn btn-primary btn-user btn-block" tabindex="4">Masuk</button>
->>>>>>>> f6650a7e1465908dd854f5ea958c198a85affbef:resources/views/sso.blade.php
                         </div>
                     </div>
                 </form>

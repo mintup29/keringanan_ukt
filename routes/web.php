@@ -24,6 +24,8 @@ Route::group(['middleware' => 'guest'], function(){
 });
 Route::get('/login', function(){
     return view('auth/sso');
+});
+
 Route::get('/logout', [Authcontroller::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'isAdmin'])->group(function(){
@@ -60,4 +62,4 @@ Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->
 Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('pengajuan.update-action');
 
 Route::get('/getPengajuan', [\App\Http\Controllers\PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');
-Route::get('/', function () {return view('landing-page');})->name('home');
+Route::get('/home', function () {return view('landing-page');})->name('home');

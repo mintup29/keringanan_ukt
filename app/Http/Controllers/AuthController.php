@@ -18,9 +18,9 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)){
             if(Auth::user()->user_type == 'Admin'){
-                return redirect()->route('admin');
+                return redirect()->route('dashboard-admin');
             }else{
-                return redirect()->route('pengajuan');
+                return redirect()->route('kuesioner');
             }
         }else{
             return back()->with('error', 'login gagal');

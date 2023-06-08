@@ -19,16 +19,16 @@
         @if(!empty($pengajuan))
         <table class="table rounded-corners">
             <tr>
-                <th>Tanggal Pengajuan</th>
-                <th>Tahun</th>
+                {{-- <th>Tanggal Pengajuan</th> --}}
+                {{-- <th>Tahun</th> --}}
                 <th>Semester</th>
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>
             @foreach($pengajuan as $row)
                 <tr>
-                    <td>{{ $row->tgl_pengajuan }}</td>
-                    <td>{{ substr($row->tgl_pengajuan, 0, 4) }}</td>
+                    {{-- <td>{{ $row->tgl_pengajuan }}</td> --}}
+                    {{-- <td>{{ substr($row->tgl_pengajuan, 0, 4) }}</td> --}}
                     <td>{{ $row->semester}}</td>
                     <td>@if($row->status == 1)
                             <div class="status-p p-processing">Processing</div>

@@ -29,7 +29,7 @@
             </select>
         </div>
         <form action="">
-            @foreach ($pertanyaans as $item)
+            @foreach ($pertanyaan as $item)
             <div class="row my-4">
                 <div class="col-lg-8 offset-lg-2 shadow rounded-3" style="background-color: white;">
                     <div class="row">
