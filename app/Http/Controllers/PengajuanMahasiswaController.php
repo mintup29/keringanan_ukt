@@ -18,7 +18,7 @@ class PengajuanMahasiswaController extends Controller
     {
         if ($request->ajax()) {
             $data = PengajuanMahasiswa::join('mahasiswa', 'pengajuan_mahasiswa.id_mahasiswa', '=', 'mahasiswa.id')
-                ->join('jawaban_mahasiswa', 'jawaban_mahasiswa.id_pengajuan_mhs', '=', 'pengajuan_mahasiswa.id')
+                ->join('jawaban_mahasiswa', 'jawaban_mahasiswa.id_mahasiswa', '=', 'pengajuan_mahasiswa.id_mahasiswa')
                 ->select('*');
             // $data = PengajuanMahasiswa::select('*');
             // $data = PengajuanMahasiswa::with('mahasiswa')->get();
