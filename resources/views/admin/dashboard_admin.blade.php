@@ -42,7 +42,7 @@
     </div>
 </head>
 
-<body>
+<body style="background-color: #ebf2fc;">
     <div class="container col-lg-9" style="padding-top: 40px; padding-bottom: 20px;">
         <div class="row">
             <div class="col-md-6">
