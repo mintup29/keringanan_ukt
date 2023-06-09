@@ -105,7 +105,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ route('pengajuan.index') }}",
+                url: "{{ route('dashboard-admin.index') }}",
                 data: function (d) {
                     d.status = $('#status').val()
                     d.search = $('input[type="search"]').val()

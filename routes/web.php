@@ -34,8 +34,10 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/admin', function(){
         return view('admin/dashboard_admin');
     });
-    Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('pengajuan.index');
-    Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('pengajuan.update-action');
+    Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('dashboard-admin.index');
+    Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('dashboard-admin.update-action');
+
+    Route::get('items/{id}', [PengajuanMahasiswaController::class, 'show'])->name('items.show');
     
 });
 

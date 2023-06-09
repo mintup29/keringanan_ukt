@@ -2,7 +2,7 @@
 @section('content')
 
 <body>
-    <div class="container col-lg-9 shadow table-responsive" >
+    <div class="container col-lg-9 shadow table-responsive" style="padding-top: 40px; padding-bottom: 20px;">
         <h5>Detail Data Keringanan Mahasiswa</h5>
         <table class="table">
             <tr>

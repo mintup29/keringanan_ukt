@@ -119,3 +119,30 @@ table.rounded-corners tr {
     background-color: white;
     box-shadow: 0px 3px lightgray;
 }
+
+.blue-box {
+    background-color: blue;
+    color: white;
+    width: 100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.red-box {
+    background-color: red;
+    color: white;
+    width: 100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.green-box {
+    background-color: green;
+    color: white;
+    width: 100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}

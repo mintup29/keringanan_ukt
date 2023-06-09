@@ -61,4 +61,11 @@ class PengajuanMahasiswaController extends Controller
         return response()->json(['message' => 'Action updated successfully.']);
     }
     
+    public function show($id)
+    {
+        $item = PengajuanMahasiswa::findOrFail($id);
+
+        return view('admin.detail', compact('item'));
+    }
+
 }
