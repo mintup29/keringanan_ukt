@@ -43,6 +43,8 @@ Route::post('tambah-pertanyaan', [PertanyaanController::class, 'store']);
 
 Route::get('/setting-jawaban/{id}', [PertanyaanController::class, 'show']);
 
+Route::post('admin-setting/delete/{id}', [PertanyaanController::class, 'destroy']);
+
 Route::get('/admin', function(){
     return view('admin/dashboard_admin');
 });

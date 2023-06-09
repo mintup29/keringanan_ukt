@@ -74,8 +74,14 @@ class PertanyaanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pertanyaan $pertanyaan)
+    public function destroy(Pertanyaan $id)
     {
-        //
+        Pertanyaan::where('id', $id->id)->delete();
+        $id->delete();
+
+        return redirect('/admin-setting')->with('success', 'Pertanyaan telah dihapus!');
+        // $pertanyaan = Pertanyaan::find($id);
+        // $pertanyaan->delete();
+        // return redirect()->route('pertanyaan.destroy')->with('success', 'Pertanyaan berhasil dihapus');
     }
 }
