@@ -32,7 +32,7 @@ class KuesionerController extends Controller
         $pertanyaan = new JawabanMahasiswa;
 
         //objek->namakolom = request->input('nama_input')
-        $pertanyaan->pertanyaan() = $request->input('pertanyaan');
+        $pertanyaan->pertanyaan = $request->input('pertanyaan');
 
         $pertanyaan->save();
 
