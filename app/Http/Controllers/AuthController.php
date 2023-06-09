@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function login(){
-        return view('sso');
+        return view('auth/sso');
     }
     public function loginPost(Request $request){
         $credentials = [
