@@ -10,32 +10,30 @@
 <body>
     <div class="row h-100">
     <div class="container col-lg-5 h-100" style="text-align: center;">
-        <img class="rounded-big ml-auto shadow" alt="profile picture" src="https://pkptki.lppm.uns.ac.id/wp-content/uploads/sites/12/2022/04/Haryono-Setiadi-ST.-M.Eng_-234x300.jpg" /><br>
-        <div class="profile-text shadow">Haryono</div>
-        <div class="profile-text shadow">Informatika</div>
-        
+        <img class="rounded-big ml-auto shadow" alt="profile picture" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" /><br>
+        @foreach($profile as $profil)
+        <div class="profile-text shadow">{{ $profil->nama }}</div>
+        <div class="profile-text shadow">{{ $profil->prodi }}</div>
+        @endforeach
     </div>
     <div class="container col-lg-7 shadow" >
         @if(!empty($pengajuan))
         <table class="table rounded-corners">
-            <tr>
-                {{-- <th>Tanggal Pengajuan</th> --}}
-                {{-- <th>Tahun</th> --}}
+            <tr><th>Tahun</th>
                 <th>Semester</th>
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>
             @foreach($pengajuan as $row)
                 <tr>
-                    {{-- <td>{{ $row->tgl_pengajuan }}</td> --}}
-                    {{-- <td>{{ substr($row->tgl_pengajuan, 0, 4) }}</td> --}}
+                    <td>{{ $row->tahun }}</td>
                     <td>{{ $row->semester}}</td>
-                    <td>@if($row->status == 1)
-                            <div class="status-p p-processing">Processing</div>
-                        @elseif($row->status == 2)
-                            <div class="status-p p-approved"> Approved </div>
+                    <td>@if($row->status == "Rejected")
+                            <div class="status-p p-rejected">Processing</div>
+                        @elseif($row->status == "Accepted")
+                            <div class="status-p p-approved"> Accepted </div>
                         @else
-                            <div class="status-p p-rejecter">Rejected</div>
+                            <div class="status-p p-processing">Need Action</div>
                         @endif
                     </td>
                     <td><button class="btn-detail">Detail</button></td>
