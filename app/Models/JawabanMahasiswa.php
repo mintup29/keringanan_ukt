@@ -7,7 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class JawabanMahasiswa extends Model
 {
-    public function jawaban_mahasiswa()
+    protected $primarykey = 'id';
+    protected $table = 'jawaban_mahasiswa';
+
+    // public function mahasiswa(): BelongsTo
+    // {
+    //     return $this->belongsTo(Mahasiswa::class);
+    // }
+
+    public function mahasiswa()
     {
         return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
     }

@@ -66,6 +66,8 @@
                     <th>NIM</th>
                     <th>Nama Mahasiswa</th>
                     <th>Skor</th>
+                    <th>Tahun</th>
+                    <th>Semester</th>
                     <th>Status</th>
                     <th class="col-md-3">Aksi</th>
                 </tr>
@@ -123,22 +125,27 @@
                 {data: 'nim', name: 'nim'},
                 {data: 'nama', name: 'nama'},
                 {data: 'skor_total', name: 'skor_total'},
+                {data: 'tahun', name: 'tahun'},
+                {data: 'semester', name: 'semester'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             createdRow: function (row, data, index) {
                 if (data['status'] == 'Need Action') {
-                    $('td', row).eq(3).addClass('blue-box');
+                    $('td', row).eq(5).addClass('blue-box');
                 } else if (data['status'] == 'Accepted') {
-                    $('td', row).eq(3).addClass('green-box');
+                    $('td', row).eq(5).addClass('green-box');
                 } else if (data['status'] == 'Rejected') {
-                    $('td', row).eq(3).addClass('red-box');
+                    $('td', row).eq(5).addClass('red-box');
                 } 
             },
         });
         $('#status').change(function(){
             table.draw();
         });
+        // $('input[type="search"]').on('keyup', function () {
+        //     table.search(this.value).draw();
+        // });
     });
 </script>
 
