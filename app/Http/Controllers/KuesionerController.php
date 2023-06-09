@@ -25,17 +25,17 @@ class KuesionerController extends Controller
         return View::make('user.kuesioner')->with('pertanyaan', $pertanyaan); //return the view with posts
     }
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate(['id_jawaban'=>'required']);
+    // // public function store(Request $request)
+    // // {
+    // //     $request->validate(['id_jawaban'=>'required']);
 
-    //     $pertanyaan = new JawabanMahasiswa;
+    // //     $pertanyaan = new JawabanMahasiswa;
 
     //     //objek->namakolom = request->input('nama_input')
-    //     $pertanyaan->pertanyaan() = $request->input('pertanyaan');
+    //     $pertanyaan->pertanyaan = $request->input('pertanyaan');
 
-    //     $pertanyaan->save();
+    // //     $pertanyaan->save();
 
-    //     return redirect()->back()->with('success', 'Pertanyaan berhasil ditambahkan');
-    // }
+    // //     return redirect()->back()->with('success', 'Pertanyaan berhasil ditambahkan');
+    // // }
 }

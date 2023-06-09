@@ -19,5 +19,11 @@ class AdminMiddleware
         if (Auth::user()->user_type == 'Admin'){
             return $next($request);
         }
+        else{
+            return redirect('/pengajuan');
+        }
+        if (empty(Auth::user())){
+            return redirect('/home');
+        }
     }
 }

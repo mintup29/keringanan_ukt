@@ -18,7 +18,7 @@ class PengajuanMahasiswaController extends Controller
     {
         if ($request->ajax()) {
             $data = PengajuanMahasiswa::join('mahasiswa', 'pengajuan_mahasiswa.id_mahasiswa', '=', 'mahasiswa.id')
-                ->join('jawaban_mahasiswa', 'jawaban_mahasiswa.id_mahasiswa', '=', 'pengajuan_mahasiswa.id_mahasiswa')
+                // ->join('jawaban_mahasiswa', 'jawaban_mahasiswa.id_mahasiswa', '=', 'pengajuan_mahasiswa.id_mahasiswa')
                 ->select('*');
             // $data = PengajuanMahasiswa::select('*');
             // $data = PengajuanMahasiswa::with('mahasiswa')->get();
@@ -61,4 +61,11 @@ class PengajuanMahasiswaController extends Controller
         return response()->json(['message' => 'Action updated successfully.']);
     }
     
+    public function show($id)
+    {
+        $item = PengajuanMahasiswa::findOrFail($id);
+
+        return view('admin.detail', compact('item'));
+    }
+
 }

@@ -7,10 +7,9 @@
 
     <!-- <link href="/css/styles.css" rel="stylesheet" /> -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="/css/custom.css" rel="stylesheet" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -19,11 +18,19 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
     <!-- start navbar -->
     <nav class="navbar fixed-top navbar-custom">
         <span onclick="toggleSidenav()"><i class="fa fa-bars"></i></span>
         <img class="rounded ml-auto" alt="profile picture" src="https://pkptki.lppm.uns.ac.id/wp-content/uploads/sites/12/2022/04/Haryono-Setiadi-ST.-M.Eng_-234x300.jpg" />
-        <a>Haryono</a>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{ Auth::user()->name }}
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+            </div>
+        </div>
     </nav>
 
     <div id="mySidenav" class="sidenav">
@@ -31,7 +38,6 @@
         <a href="#" style="margin-top: 200%"><i class="fa fa-home"></i><p>Home</p></a>
         <a href="#"><i class="fa fa-gear"></i><p>Settings</p></a>
     </div>
-    <!-- end navbar -->
 </head>
 
 <body>
@@ -105,7 +111,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ route('pengajuan.index') }}",
+                url: "{{ route('dashboard-admin.index') }}",
                 data: function (d) {
                     d.status = $('#status').val()
                     d.search = $('input[type="search"]').val()
