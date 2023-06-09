@@ -39,21 +39,19 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
 
     Route::get('items/{id}', [PengajuanMahasiswaController::class, 'show'])->name('items.show');
     
+    Route::post('tambah-pertanyaan', [PertanyaanController::class, 'store']);
+    Route::get('/setting-jawaban/{id}', [PertanyaanController::class, 'show']);
+    
 });
 
 Route::middleware(['auth', 'isUser'])->group(function(){
+    Route::get('/getPengajuan', [PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');
     Route::get('/pengajuan', [MhsController::class, 'mhsDashboard'])->name('pengajuan');
     Route::get('/kuesioner', function(){return view('user.kuesioner');})->name('kuesioner');
+    Route::get('/pengajuan_2', function(){
+        return view('user/profil');
+    });
 });
-Route::get('/pengajuan_2', function(){
-    return view('user/user2');
-});
 
-Route::post('tambah-pertanyaan', [PertanyaanController::class, 'store']);
-
-Route::get('/setting-jawaban/{id}', [PertanyaanController::class, 'show']);
-
-
-Route::get('/getPengajuan', [PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');
 Route::get('/home', function () {return view('landing-page');})->name('home');
 Route::get('/', function () {return view('landing-page');});
