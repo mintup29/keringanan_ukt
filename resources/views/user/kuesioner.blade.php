@@ -15,13 +15,13 @@
             </div>
         </div>
         <div class="row">
-            <select class="form-select shadow col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto" aria-label="Default select example">
+            <select class="form-select shadow col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto">
                 <option selected>Pilih Tahun</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
-            <select class="form-select shadow col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto" aria-label="Default select example">
+            <select class="form-select shadow col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto">
                 <option selected>Pilih Semester</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
