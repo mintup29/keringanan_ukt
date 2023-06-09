@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function login(){
-        return view('sso');
+        return view('auth/sso');
     }
     public function loginPost(Request $request){
         $credentials = [
@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)){
             if(Auth::user()->user_type == 'Admin'){
-                return redirect()->route('dashboard-admin');
+                return redirect()->route('dashboard-admin.index');
             }else{
                 return redirect()->route('kuesioner');
             }

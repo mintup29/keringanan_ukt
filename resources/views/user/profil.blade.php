@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pengajuan Keringanan UKT</title>
-    @include('user.navbar2')
+    @include('navbar1')
 </head>
 
 <body>
@@ -50,7 +50,4 @@
     </div>
 
 </body>
-    <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </html>

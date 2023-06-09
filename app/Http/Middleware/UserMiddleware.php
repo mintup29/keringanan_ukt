@@ -19,5 +19,11 @@ class UserMiddleware
         if (Auth::user()->user_type == 'User'){
             return $next($request);
         }
+        else{
+            return redirect('/admin');
+        }
+        if (empty(Auth::user())){
+            return redirect('/home');
+        }
     }
 }
