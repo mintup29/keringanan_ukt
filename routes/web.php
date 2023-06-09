@@ -30,27 +30,24 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/admin-setting', function(){
         return view('admin/dashboard_admin_setting');
     });
-    Route::get('/admin-setting', [PertanyaanController::class, 'index'])->name('admin-setting');
+    Route::get('/admin-setting', [PertanyaanController::class, 'index']);
     Route::get('/admin', function(){
         return view('admin/dashboard_admin');
     });
     Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('dashboard-admin.index');
     Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('dashboard-admin.update-action');
 
-Route::get('/admin-setting', [PertanyaanController::class, 'index']);
-
-Route::post('tambah-pertanyaan', [PertanyaanController::class, 'store']);
-
-Route::get('/setting-jawaban/{id}', [PertanyaanController::class, 'show']);
-
-Route::get('/admin', function(){
-    return view('admin/dashboard_admin');
+    Route::get('items/{id}', [PengajuanMahasiswaController::class, 'show'])->name('items.show');
+    
+    Route::post('tambah-pertanyaan', [PertanyaanController::class, 'store']);
+    Route::get('/setting-jawaban/{id}', [PertanyaanController::class, 'show']);
+    
 });
 
 Route::middleware(['auth', 'isUser'])->group(function(){
     Route::get('/getPengajuan', [PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');
     Route::get('/pengajuan', [MhsController::class, 'mhsDashboard'])->name('pengajuan');
-    Route::get('/kuesioner', function(){return view('user.kuesioner');})->name('kuesioner');
+    Route::get('/kuesioner', [KuesionerController::class, 'index']);
     Route::get('/pengajuan_2', function(){
         return view('user/profil');
     });

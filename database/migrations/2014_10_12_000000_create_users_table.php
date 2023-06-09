@@ -18,6 +18,14 @@ return new class extends Migration
             $table->string('password');
             $table->string('user_type');
         });
+
+        $createMultipleJawabans = [
+            ['name' => 'Admin', 'email' => 'admin@x.com', 'password' => "$2y$10/PN7zjyCcuAT.mEB3uNCBUiqTv9m.KVuys7pAaON7XdO", 'user_type' => 'Admin'],
+            ['name' => 'User', 'email' => 'user@x.com', 'password' => "$2y$10.4fNfdYq2Gecl1LSsi7xESAy7UEibz1ndarZGkKDL2", 'user_type' => 'User']
+        ];
+
+        //User::insert($createMultipleUsers); // Eloquent
+        \DB::table('users')->insert($createMultipleJawabans); // Query Builder
     }
 
     /**
