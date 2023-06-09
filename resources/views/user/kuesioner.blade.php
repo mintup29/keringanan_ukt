@@ -41,8 +41,8 @@
                         <div class="col-12 mx-2 my-2">
                             <div class="form-check">
                                 @foreach ($item->jawaban as $jawaban)
-                                <input class="form-check-input" type="radio" name={{ $jawaban->id }} id={{ $jawaban->id }}>
-                                <label class="form-check-label" for={{ $jawaban->id }}>
+                                <input class="form-check-input" type="radio" name="{{ $jawaban->id }}" id="{{ $jawaban->id }}">
+                                <label class="form-check-label" for="{{ $jawaban->id }}">
                                     <p>{{$jawaban->jawaban}}</p>
                                 @endforeach
                                 </label>
