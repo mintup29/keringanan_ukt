@@ -28,12 +28,12 @@
                 <tr>
                     <td>{{ $row->tahun }}</td>
                     <td>{{ $row->semester}}</td>
-                    <td>@if($row->status == "Processing")
-                            <div class="status-p p-processing">Processing</div>
+                    <td>@if($row->status == "Rejected")
+                            <div class="status-p p-rejected">Processing</div>
                         @elseif($row->status == "Accepted")
                             <div class="status-p p-approved"> Accepted </div>
                         @else
-                            <div class="status-p p-rejecter">Rejected</div>
+                            <div class="status-p p-processing">Need Action</div>
                         @endif
                     </td>
                     <td><button class="btn-detail">Detail</button></td>
