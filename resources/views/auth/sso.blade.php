@@ -60,37 +60,20 @@
                 <img src="https://sso.uns.ac.id/module.php/uns/img/logo-uns.png" alt="Logo Universitas Sebelas Maret" width="50%" height="50%">
             </div>
             <div class="login-box-header ">
-                                    Masukkan email dan password anda
+                                    Masukkan email dan password anda!
                             </div>
             <div class="login-box-body">
-                                <form action="?" method="post" name="f">
-                                            <input type="hidden" name="AuthState" value="_181f9ab5d57f7e0188926e83d1c880e04e72cd9139:https://sso.uns.ac.id/saml2/idp/SSOService.php?spentityid=https%3A%2F%2Focw.uns.ac.id&amp;RelayState=https%3A%2F%2Focw.uns.ac.id%2Fsaml%2Flogin&amp;cookieTime=1685084909"/>
-                                        <div class="form-group has-feedback ">
-                        <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Email UNS"
-                            name="username"
-                                                        autofocus                            tabindex="1"
-                            data-toggle="tooltip"
-                            title="Username atau alamat email UNS Anda"/>
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <form action="{{ route('login') }}" method="POST">
+                        @csrf
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="E-mail" name="email" id="email" tabindex="2"/>
                     </div>
-                    <div class="form-group has-feedback ">
-                        <input type="password" class="form-control" placeholder="Kata sandi" name="password"  tabindex="2"/>
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Kata sandi" name="password" id="password"  tabindex="2"/>
                     </div>
                     <div class="row">
-                        <div class="col-xs-8">
-                            <div class="checkbox icheck">
-                                <label data-toggle="tooltip" title="Jika anda mencentang ini, maka akun anda akan aktif selama 7 hari">
-                                    <input type="checkbox" name="remember_me" tabindex="3">
-                                    Ingat saya
-                                </label>
-                            </div>
-                        </div>
                         <div class="col-xs-4">
-                            <button type="button" class="btn btn-primary btn-block btn-flat" tabindex="4"><a href="/pengajuan" style="color:white;">Masuk</a></button>
+                            <button class="btn btn-primary btn-user btn-block" tabindex="4">Masuk</button>
                         </div>
                     </div>
                 </form>
