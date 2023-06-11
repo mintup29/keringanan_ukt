@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 // use App\Http\Controllers\Controller;
 use App\Models\PengajuanMahasiswa;
-
+use App\Models\Mahasiswa;
+use App\Models\JawabanMahasiswa;
 use DataTables;
 use Illuminate\Http\Request;
 
@@ -39,9 +40,10 @@ class PengajuanMahasiswaController extends Controller
                     ->addColumn('nama', function ($nama) {
                         return $nama->mahasiswa->nama;
                     })
-                    ->addColumn('semester', function ($semester) {
-                        return $semester->semester;
-                    })
+                    // ->orderColumn('semester', 'asc')
+                    // ->addColumn('semester', function ($semester) {
+                    //     return $semester->semester;
+                    // })
                     ->filter(function ($instance) use ($request) {
                         if ($request->get('status') == 'Need Action' || $request->get('status') == 'Accepted' || $request->get('status') == 'Rejected') {
                             $instance->where('status', $request->get('status'));
@@ -62,8 +64,8 @@ class PengajuanMahasiswaController extends Controller
                         }
 
                     })
-                    // ->rawColumns(['action', 'nim','nama'])
-                    ->rawColumns(['action'])
+                    ->rawColumns(['action', 'nim','nama'])
+                    // ->rawColumns(['action'])
                     ->make(true);
         }
 
@@ -80,7 +82,10 @@ class PengajuanMahasiswaController extends Controller
     
     public function show($id)
     {
-        $item = PengajuanMahasiswa::findOrFail($id);
+        // $item = PengajuanMahasiswa::find($id);
+        // $item = Mahasiswa::with('jawaban_mahasiswa', 'pengajuan_mahasiswa')->findOrFail($id);
+        $item = PengajuanMahasiswa::with('mahasiswa', 'mahasiswa.jawaban_mahasiswa', 'mahasiswa.jawaban_mahasiswa.pertanyaan', 'mahasiswa.jawaban_mahasiswa.jawaban')->findOrFail($id);
+        // $jawaban = JawabanMahasiswa::with('jawaban.jawaban_mahasiswa')->findOrFail($id);
 
         return view('admin.detail', compact('item'));
     }

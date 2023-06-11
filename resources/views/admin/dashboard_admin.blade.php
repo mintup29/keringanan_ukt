@@ -65,9 +65,9 @@
                 <tr>
                     <th>NIM</th>
                     <th>Nama Mahasiswa</th>
-                    <th>Skor</th>
                     <th>Tahun</th>
                     <th>Semester</th>
+                    <th>Skor</th>
                     <th>Status</th>
                     <th class="col-md-3">Aksi</th>
                 </tr>
@@ -124,9 +124,9 @@
             columns: [
                 {data: 'nim', name: 'nim'},
                 {data: 'nama', name: 'nama'},
-                {data: 'skor_total', name: 'skor_total'},
                 {data: 'tahun', name: 'tahun'},
                 {data: 'semester', name: 'semester'},
+                {data: 'skor_total', name: 'skor_total'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],

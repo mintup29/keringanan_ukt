@@ -9,18 +9,18 @@ class Mahasiswa extends Model
 {
     protected $primarykey = 'id';
     protected $table = 'mahasiswa';
-    // protected $fillable = [
-    //   'nim','nama'
-    // ];
+    protected $fillable = [
+      'nim','nama'
+    ];
 
     public function jawaban_mahasiswa()
     {
-        return $this->hasMany(JawabanMahasiswa::class);
+        return $this->hasMany(JawabanMahasiswa::class, 'id_mahasiswa');
     }
 
     public function pengajuan_mahasiswa()
     {
-        return $this->hasMany(PengajuanMahasiswa::class);
+        return $this->hasMany(PengajuanMahasiswa::class, 'id_mahasiswa');
     }
     
     // public function pengajuan_mahasiswa(): HasMany
