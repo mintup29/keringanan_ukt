@@ -2,6 +2,8 @@
 @section('content')
 
 <div class="container" style="padding-bottom:5%">
+  @forelse($pertanyaan as $pertanyaan)
+
     <!-- Judul Halaman -->  
     <div class="row mt-3">
       <div class="col-lg-8 offset-lg-2 col-sm-8 offset-sm-2 text-center div-title-admin" style="font-weight: 900">
@@ -14,7 +16,7 @@
           <p style="font-weight: 500">Pertanyaan Anda</p>
           <div class="row">
             <div class="col-12">
-                <p>halo deck</p>
+              <p>{{ $pertanyaan->pertanyaan }}</p>
             </div>
           </div>
         </div>
@@ -48,15 +50,27 @@
                 <tr class="shadow-sm" style="background-color:white">
                   <!-- Isi Jawaban-->
                   <td class="p-3 fw-bold">
-                    <div class="input-group input-group-sm my-lg-1 col-sm-12 justify-content-center">
-                      <input type="text" class="form-control col-lg-9" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                    </div>
+                    @forelse($pertanyaan->jawaban as $jawaban)
+                      <div class="col-12 text-center shadow my-2 p-2" style="background-color:white; font-size:15px; font-weight:500">
+                        <div class="input-group input-group-sm my-lg-1 col-sm-12 justify-content-center">                    
+                          <input type="text" class="form-control col-lg-12 mx-1 text-center" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="jawaban" value="{{ (Request::old('jawaban')) ?: $jawaban->jawaban }}">
+                        </div>
+                      </div>
+                    @empty
+                      <p>tidak ada record</p>
+                    @endforelse
                   </td>
                   <!-- Isi Skor-->
                   <td class="p-3 fw-bold">
-                    <div class="input-group input-group-sm my-lg-1 col-sm-12 justify-content-center">
-                      <input type="text" class="form-control col-lg-3 mx-1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">                      
-                    </div>
+                    @forelse($pertanyaan->skor as $skor)
+                      <div class="col-12 text-center shadow my-2 p-2" style="background-color:white; font-size:15px; font-weight:500">
+                        <div class="input-group input-group-sm my-lg-1 col-sm-12 justify-content-center">                    
+                          <input type="text" class="form-control col-lg-12 mx-1 text-center" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="skor" value="{{ (Request::old('skor')) ?: $skor->skor }}">
+                        </div>
+                      </div>
+                    @empty
+                      <p>tidak ada record</p>
+                    @endforelse
                   </td>
                   <!-- Button Hapus jawaban dan skor -->
                   <td class="p-lg-3 p-sm-3 text-center">
@@ -82,6 +96,10 @@
         </div> 
       </div>
     </form>
+
+  @empty    
+    <p>tidak ada record</p>
+  @endforelse
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
