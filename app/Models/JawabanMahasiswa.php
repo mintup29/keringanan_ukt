@@ -13,11 +13,6 @@ class JawabanMahasiswa extends Model
       'id_mahasiswa', 'id_pengajuan_mahasiswa', 'id_jawaban', 'id_pertanyaan', 'id_skor'
     ];
 
-    // public function mahasiswa(): BelongsTo
-    // {
-    //     return $this->belongsTo(Mahasiswa::class);
-    // }
-
     public function mahasiswa()
     {
         return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
