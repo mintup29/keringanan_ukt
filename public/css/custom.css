@@ -10,6 +10,9 @@ i.fa-bars {
     color: white;
     cursor: pointer;
 }
+.btn {
+    text-transform: uppercase;
+}
 .btn-primary.dropdown-toggle{
     background-color: #3bafda;
 }
