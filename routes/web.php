@@ -21,8 +21,9 @@ use App\Http\Controllers\AuthController;
 Route::group(['middleware' => 'guest'], function(){
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
-    Route::get('/kuesioner', [KuesionerController::class, 'index']);
+    
 });
+Route::get('/kuesioner', [KuesionerController::class, 'index']);
 
 Route::get('/logout', [Authcontroller::class, 'logout'])->name('logout');
 
@@ -47,11 +48,13 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
 Route::middleware(['auth', 'isUser'])->group(function(){
     Route::get('/getPengajuan', [PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');
     Route::get('/pengajuan', [MhsController::class, 'mhsDashboard'])->name('pengajuan');
-    Route::get('/kuesioner', function(){return view('user.kuesioner');})->name('kuesioner');
+    
     Route::get('/pengajuan_2', function(){
         return view('user/profil');
     });
 });
+Route::get('/kuesioner', [KuesionerController::class, 'index']);
+Route::post('isi-kuesioner', [KuesionerController::class, 'store']);
 
 Route::get('/home', function () {return view('landing-page');})->name('home');
 Route::get('/', function () {return view('landing-page');});

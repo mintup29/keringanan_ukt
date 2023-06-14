@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JawabanMahasiswa;
 use App\Models\Pertanyaan;
 use View;
 use Illuminate\Http\Request;
+use App\Post;
 
 class KuesionerController extends Controller
 {
@@ -21,21 +23,19 @@ class KuesionerController extends Controller
     //     return Jawaban::all();
     // }
     public function index(){
-        $pertanyaan = Pertanyaan::with('jawaban','skor')->get();
-        return View::make('user.kuesioner')->with('pertanyaan', $pertanyaan); //return the view with posts
+        $pertanyaans = Pertanyaan::with('jawaban','skor')->get();
+        return View::make('user.kuesioner')->with('pertanyaan', $pertanyaans); //return the view with posts
     }
-
-    // // public function store(Request $request)
-    // // {
-    // //     $request->validate(['id_jawaban'=>'required']);
-
-    // //     $pertanyaan = new JawabanMahasiswa;
-
-    //     //objek->namakolom = request->input('nama_input')
-    //     $pertanyaan->pertanyaan = $request->input('pertanyaan');
-
-    // //     $pertanyaan->save();
-
-    // //     return redirect()->back()->with('success', 'Pertanyaan berhasil ditambahkan');
-    // // }
+    public function store(Request $request){
+        $jawaban = new JawabanMahasiswa();
+        $input = $request->input('pertanyaan{{ $item->id }}');
+        $jawaban->id_pertanyaan = $input;
+        $jawaban->id_jawaban = $input;
+        $jawaban->id_jawaban = $input;
+        $jawaban->id_mahasiswa = $input;
+        $jawaban->id_pengajuan_mahasiswa = $input;
+        $jawaban->id_skor = $input;
+        $jawaban->save();
+        return redirect()->back()->with('success', 'Pertanyaan berhasil ditambahkan');
+    }
 }
