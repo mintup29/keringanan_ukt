@@ -10,7 +10,7 @@ class JawabanMahasiswa extends Model
     protected $primarykey = 'id';
     protected $table = 'jawaban_mahasiswa';
     protected $fillable = [
-      'id_mahasiswa', 'id_jawaban', 'id_pertanyaan', 'id_skor'
+      'id_mahasiswa', 'id_pengajuan_mahasiswa', 'id_jawaban', 'id_pertanyaan', 'id_skor'
     ];
 
     // public function mahasiswa(): BelongsTo

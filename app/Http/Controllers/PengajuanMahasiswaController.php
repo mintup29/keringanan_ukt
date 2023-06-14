@@ -84,7 +84,8 @@ class PengajuanMahasiswaController extends Controller
     {
         // $item = PengajuanMahasiswa::find($id);
         // $item = Mahasiswa::with('jawaban_mahasiswa', 'pengajuan_mahasiswa')->findOrFail($id);
-        $item = PengajuanMahasiswa::with('mahasiswa', 'mahasiswa.jawaban_mahasiswa', 'mahasiswa.jawaban_mahasiswa.pertanyaan', 'mahasiswa.jawaban_mahasiswa.jawaban')->findOrFail($id);
+        // $item = PengajuanMahasiswa::with('mahasiswa', 'jawaban_mahasiswa', 'mahasiswa.jawaban_mahasiswa', 'mahasiswa.jawaban_mahasiswa.pertanyaan', 'mahasiswa.jawaban_mahasiswa.jawaban')->findOrFail($id);
+        $item = PengajuanMahasiswa::with('mahasiswa', 'jawaban_mahasiswa',  'jawaban_mahasiswa.pertanyaan', 'jawaban_mahasiswa.jawaban')->findOrFail($id);
         // $jawaban = JawabanMahasiswa::with('jawaban.jawaban_mahasiswa')->findOrFail($id);
 
         return view('admin.detail', compact('item'));

@@ -21,13 +21,13 @@
                 <td>Program Studi: {{ $item->mahasiswa->prodi }}</td>                    
             </tr>
             <tr>
-                <td>Nominal UKT: {{ $item }}</td>                    
+                
+                <td>Nominal UKT: {{ $item['jawaban_mahasiswa']->where('id_jawaban', 21)->first()['jawaban']['jawaban'] }}</td> 
+                
             </tr>
+            
             <tr>
-                <td>Kelengkapan Orang Tua: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Apakah Orang Tua Bekerja: {{ $item}}</td>                    
+                <td>Apakah Orang Tua Bekerja: {{ $item['jawaban_mahasiswa']->where('id_jawaban', 9)->first()['jawaban']['jawaban'] }}</td>                    
             </tr>
             <tr>
                 <td>Orang Tua yang Bekerja: {{ $item}}</td>                    

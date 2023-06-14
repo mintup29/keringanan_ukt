@@ -20,7 +20,7 @@ class PengajuanMahasiswa extends Model
 
     public function jawaban_mahasiswa()
     {
-        return $this->hasMany(JawabanMahasiswa::class, 'id_mahasiswa');
+        return $this->hasMany(JawabanMahasiswa::class, 'id_pengajuan_mahasiswa');
     }
 
     // public function jawaban()
