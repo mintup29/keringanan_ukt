@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_mahasiswa')->constrained('mahasiswa')->comment('relasi ke tabel mahasiswa');
             $table->foreignId('id_pengajuan_mahasiswa')->constrained('pengajuan_mahasiswa')->comment('relasi ke tabel pengajuan mahasiswa');
-            $table->foreignId('id_pertanyaan')->constrained('pertanyaans')->comment('relasi ke tabel pertanyaan');
-            $table->foreignId('id_jawaban')->constrained('jawabans')->comment('relasi ke tabel jawaban');
-            $table->foreignId('id_skor')->constrained('skors')->comment('relasi ke tabel skor');;
+            $table->foreignId('id_pertanyaan')->constrained('pertanyaans')->comment('relasi ke tabel pertanyaan')->onDelete('cascade');
+            $table->foreignId('id_jawaban')->constrained('jawabans')->comment('relasi ke tabel jawaban')->onDelete('cascade');
+            $table->foreignId('id_skor')->constrained('skors')->comment('relasi ke tabel skor')->onDelete('cascade');
             $table->timestamps();
         });
     }

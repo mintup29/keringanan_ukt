@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pertanyaan;
+use App\Models\Jawaban;
 use Illuminate\Http\Request;
 use View;
 use Redirect;
+use DB;
 
 class PertanyaanController extends Controller
 {
@@ -50,9 +52,20 @@ class PertanyaanController extends Controller
      */
     public function show(Pertanyaan $id)
     {
-        $pertanyaan = Pertanyaan::with('jawaban', 'skor')->find($id);
+        $pertanyaan = Pertanyaan::with('jawaban','skor')->find($id);
         //return view('admin.setting_jawaban_admin')->with($pertanyaan);
-        return View::make('admin.setting_jawaban_admin')->with('pertanyaan', $pertanyaan); //return the view with posts
+        // return View::make('admin.setting_jawaban_admin')->with('pertanyaan', $pertanyaan); //return the view with posts
+
+        $jawabanskor = DB::table('jawabans')
+        ->join('skors', 'jawabans.id', '=', 'skors.jawaban_id')
+        ->where('jawabans.pertanyaan_id', '=', $id)
+        ->select('*')
+        ->groupBy('jawabans.id')
+        ->get();
+
+        // return View::make('admin.setting_jawaban_admin'); //return the view with posts
+
+        return View::make('admin.setting_jawaban_admin')->with('jawabanskor', $jawabanskor)->with('pertanyaan', $pertanyaan); //return the view with posts
     }
 
     /**
@@ -66,16 +79,36 @@ class PertanyaanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pertanyaan $pertanyaan)
+    public function update(Request $request, Pertanyaan $id)
     {
-        //
+        $request->validate([
+            'pertanyaan' => 'required',
+        ]);
+
+        // $pertanyaan = Pertanyaan::with('jawaban', 'skor')->find($id);
+        $pertanyaan = Pertanyaan::find($id);
+
+        // dd($pertanyaan);
+
+        $pertanyaan->toQuery()->update([
+            'pertanyaan'=>$request->pertanyaan,
+        ]);
+
+        return redirect('/admin-setting')->with('status', 'Pertanyaan berhasil diupdate!');
+        // return View::make('admin.dashboard_admin_setting.blade');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pertanyaan $pertanyaan)
+    public function destroy(Pertanyaan $id)
     {
-        //
+        Pertanyaan::where('id', $id->id)->delete();
+        $id->delete();
+
+        return redirect('/admin-setting')->with('success', 'Pertanyaan telah dihapus!');
+        // $pertanyaan = Pertanyaan::find($id);
+        // $pertanyaan->delete();
+        // return redirect()->route('pertanyaan.destroy')->with('success', 'Pertanyaan berhasil dihapus');
     }
 }

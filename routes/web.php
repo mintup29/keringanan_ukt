@@ -41,6 +41,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
     
     Route::post('tambah-pertanyaan', [PertanyaanController::class, 'store']);
     Route::get('/setting-jawaban/{id}', [PertanyaanController::class, 'show']);
+    Route::post('admin-setting/delete/{id}', [PertanyaanController::class, 'destroy']);
+    Route::post('admin-setting/update/{id}', [PertanyaanController::class, 'update']);
     
 });
 
