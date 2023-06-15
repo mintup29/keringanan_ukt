@@ -9,6 +9,7 @@
     
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="/css/custom.css" rel="stylesheet" />
     <!-- <link rel='icon' type='image/png', href='assets/img/LOGO 1.png' /> -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -24,9 +25,9 @@
     <!-- start navbar -->
     <nav class="navbar fixed-top navbar-custom">
         <span onclick="toggleSidenav()"><i class="fa fa-bars"></i></span>
-        <img class="rounded ml-auto" alt="profile picture" src="https://pkptki.lppm.uns.ac.id/wp-content/uploads/sites/12/2022/04/Haryono-Setiadi-ST.-M.Eng_-234x300.jpg" />
+        <img class="rounded ml-auto" alt="profile picture" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
         <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important; text-transform: uppercase; letter-spacing: 0.15rem; ">
                 {{ Auth::user()->name }}
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -65,6 +66,8 @@
                 <tr>
                     <th>NIM</th>
                     <th>Nama Mahasiswa</th>
+                    <th>Tahun</th>
+                    <th>Semester</th>
                     <th>Skor</th>
                     <th>Status</th>
                     <th class="col-md-3">Aksi</th>
@@ -122,23 +125,28 @@
             columns: [
                 {data: 'nim', name: 'nim'},
                 {data: 'nama', name: 'nama'},
+                {data: 'tahun', name: 'tahun'},
+                {data: 'semester', name: 'semester'},
                 {data: 'skor_total', name: 'skor_total'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             createdRow: function (row, data, index) {
                 if (data['status'] == 'Need Action') {
-                    $('td', row).eq(3).addClass('blue-box');
+                    $('td', row).eq(5).addClass('blue-box');
                 } else if (data['status'] == 'Accepted') {
-                    $('td', row).eq(3).addClass('green-box');
+                    $('td', row).eq(5).addClass('green-box');
                 } else if (data['status'] == 'Rejected') {
-                    $('td', row).eq(3).addClass('red-box');
+                    $('td', row).eq(5).addClass('red-box');
                 } 
             },
         });
         $('#status').change(function(){
             table.draw();
         });
+        // $('input[type="search"]').on('keyup', function () {
+        //     table.search(this.value).draw();
+        // });
     });
 </script>
 

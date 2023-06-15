@@ -32,5 +32,11 @@ class Jawaban extends Model
         return $this->hasOne(Skor::class);
     }
 
+    
+    public function jawaban_mahasiswa()
+    {
+        return $this->belongsTo(Pertanyaan::class, 'pertanyaan_id');
+    }
+
     use HasFactory;
 }

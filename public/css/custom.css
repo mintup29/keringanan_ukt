@@ -10,6 +10,9 @@ i.fa-bars {
     color: white;
     cursor: pointer;
 }
+.btn {
+    text-transform: uppercase;
+}
 .btn-primary.dropdown-toggle{
     background-color: #3bafda;
 }
@@ -123,8 +126,9 @@ table.rounded-corners tr {
     color: white;
     width: 100px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
+    border-radius: 25px;
+    margin-top: 7px;
 }
 
 .red-box {
@@ -132,8 +136,9 @@ table.rounded-corners tr {
     color: white;
     width: 100px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
+    border-radius: 25px;
+    margin-top: 7px;
 }
 
 .green-box {
@@ -141,8 +146,9 @@ table.rounded-corners tr {
     color: white;
     width: 100px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
+    border-radius: 25px;
+    margin-top: 7px;
 }
 
 .status-p{
