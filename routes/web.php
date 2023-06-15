@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PengajuanMahasiswaController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\KuesionerController;
+use App\Http\Controllers\SettingJawabanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,11 +38,21 @@ Route::get('/admin-setting', function(){
     return view('admin/dashboard_admin_setting');
 });
 
+
+
 Route::get('/admin-setting', [PertanyaanController::class, 'index']);
 
 Route::post('tambah-pertanyaan', [PertanyaanController::class, 'store']);
 
 Route::get('/setting-jawaban/{id}', [PertanyaanController::class, 'show']);
+
+Route::post('admin-setting/delete/{id}', [PertanyaanController::class, 'destroy']);
+
+Route::post('admin-setting/update/{id}', [PertanyaanController::class, 'update']);
+
+Route::post('tambah-jawaban', [SettingJawabanController::class, 'store']);
+
+
 
 Route::get('/admin', function(){
     return view('admin/dashboard_admin');

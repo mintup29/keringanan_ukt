@@ -13,7 +13,7 @@ return new class extends Migration {
     {
         Schema::create('jawabans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pertanyaan_id')->constrained('pertanyaans');
+            $table->foreignId('pertanyaan_id')->constrained('pertanyaans')->onDelete('cascade');
             $table->text('jawaban');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
@@ -67,10 +67,10 @@ return new class extends Migration {
             ['pertanyaan_id' => 13, 'jawaban' => '>250.000 - 500.000'],
             ['pertanyaan_id' => 13, 'jawaban' => '>150.000 - 250.000'],
             ['pertanyaan_id' => 13, 'jawaban' => '<150.000'],
-            ['pertanyaan_id' => 14, 'jawaban' => 'Roda 4 (1 buah) dan atau 4 meter'],
-            ['pertanyaan_id' => 14, 'jawaban' => '3 meter'],
-            ['pertanyaan_id' => 14, 'jawaban' => '2 meter'],
-            ['pertanyaan_id' => 14, 'jawaban' => '1 meter']
+            ['pertanyaan_id' => 14, 'jawaban' => 'Roda 4 (1 buah) dan atau 4 motor'],
+            ['pertanyaan_id' => 14, 'jawaban' => '3 motor'],
+            ['pertanyaan_id' => 14, 'jawaban' => '2 motor'],
+            ['pertanyaan_id' => 14, 'jawaban' => '1 motor']
         ];
 
         //User::insert($createMultipleUsers); // Eloquent

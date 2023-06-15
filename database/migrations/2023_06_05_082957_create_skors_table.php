@@ -12,8 +12,8 @@ return new class extends Migration {
     {
         Schema::create('skors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pertanyaan_id')->constrained('pertanyaans');
-            $table->foreignId('jawaban_id')->constrained('jawabans');
+            $table->foreignId('pertanyaan_id')->constrained('pertanyaans')->onDelete('cascade');
+            $table->foreignId('jawaban_id')->constrained('jawabans')->onDelete('cascade');
             $table->integer('skor');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

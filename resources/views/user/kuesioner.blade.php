@@ -29,7 +29,7 @@
             </select>
         </div>
         <form action="">
-            @foreach ($pertanyaans as $item)
+            @foreach ($pertanyaan as $item)
             <div class="row my-4">
                 <div class="col-lg-8 offset-lg-2 shadow rounded-3" style="background-color: white;">
                     <div class="row">
@@ -42,8 +42,8 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
-                                @foreach ($pertanyaans->jawaban as $jawaban)
-                                <p>{{$jawaban -> jawaban}}</p>
+                                @foreach ($item->jawaban as $jawaban)
+                                <p>{{$jawaban->jawaban}}</p>
                                 @endforeach
                                 </label>
                             </div>
