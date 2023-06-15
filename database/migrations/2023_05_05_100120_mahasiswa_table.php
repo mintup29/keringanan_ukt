@@ -16,12 +16,21 @@ return new class extends Migration
             $table->string('nim');
             $table->string('nama');
             $table->string('prodi');
+            $table->integer('semester');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
+
+        $createMultipleJawabans = [
+            ['nim' => 'p', 'nama' => 'q', 'prodi' => "e", 'semester' => 1, 'email' => 'p', 'email_verified_at' => NULL, 'password' => 'P', 'remember_token' => NULL, 'created_at' => NULL, 'updated_at' => NULL],
+            ['nim' => '2', 'nama' => 'qwerrty', 'prodi' => "qw", 'semester' => 1, 'email' => 'qwee', 'email_verified_at' => NULL, 'password' => 'qwqer', 'remember_token' => NULL, 'created_at' => NULL, 'updated_at' => NULL]
+        ];
+
+        //User::insert($createMultipleUsers); // Eloquent
+        \DB::table('mahasiswa')->insert($createMultipleJawabans); // Query Builder
     }
 
     /**

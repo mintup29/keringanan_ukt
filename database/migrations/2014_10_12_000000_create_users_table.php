@@ -15,11 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('user_type');
         });
+
+        $createMultipleJawabans = [
+            ['name' => 'Admin', 'email' => 'admin@x.com', 'password' => "$2y$10/PN7zjyCcuAT.mEB3uNCBUiqTv9m.KVuys7pAaON7XdO", 'user_type' => 'Admin'],
+            ['name' => 'User', 'email' => 'user@x.com', 'password' => "$2y$10.4fNfdYq2Gecl1LSsi7xESAy7UEibz1ndarZGkKDL2", 'user_type' => 'User']
+        ];
+
+        //User::insert($createMultipleUsers); // Eloquent
+        \DB::table('users')->insert($createMultipleJawabans); // Query Builder
     }
 
     /**

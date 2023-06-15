@@ -95,7 +95,7 @@
           <tbody style="font-size:14px">
             @forelse($pertanyaan as $pertanyaan)
 
-              <tr class="shadow-sm my-2" style="background-color:#EBF2FC">
+              <tr class="shadow-sm" style="background-color:#EBF2FC">
                 <!-- Isi Pertanyaan -->
                 <td class="p-3">
                   <a href="{{ url('setting-jawaban/'.$pertanyaan->id) }}" style="font-size:15px">
@@ -131,7 +131,7 @@
               
                 <!-- Button Edit dan Hapus pertanyaan -->
                 <td class="p-lg-3 p-sm-3 text-center">
-                  <button type="button" class="btn btn-primary col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3" data-target="#editModal{{$pertanyaan->id}}" data-toggle="modal">
+                  <button type="button" class="btn btn-primary col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3" onclick="window.location='/setting-jawaban'">
                     <i class="fa fa-pencil" style="font-size: 20px"></i>        
                   </button>
                   <button type="submit" class="btn btn-danger col-lg-10 col-sm-12 mx-lg-2 my-2 rounded-3" data-bs-target="#HapusModal{{$pertanyaan->id}}" data-bs-toggle="modal">
@@ -139,57 +139,6 @@
                   </button>  
                 </td>
               </tr>
-
-              {{-- Modal konfirmasi hapus --}}
-              <div class="modal fade" id="HapusModal{{$pertanyaan->id}}" tabindex="-1" aria-labelledby="HapusModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <form method="post" action="{{url('admin-setting/delete/'.$pertanyaan->id)}}">
-                      @csrf
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="HapusModalLabel">Konfirmasi Hapus</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        Apakah anda yakin ingin menghapus pertanyaan: "{{ $pertanyaan->pertanyaan }}"?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Ya</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak</button>
-                      </div>
-                    </form>             
-                  </div>
-                </div>
-              </div>
-
-              {{-- Modal update --}}
-              <div class="modal fade" id="editModal{{$pertanyaan->id}}" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <form method="POST" action="{{url('admin-setting/update/'.$pertanyaan->id)}}">
-                      @csrf
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="UpdateModalLabel">Update Pertanyaan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="form-group">
-                          <label for="pertanyaan">Pertanyaan</label>
-                          <input type="text" value="{{$pertanyaan->pertanyaan}}" class="form-control {{$errors->has('pertanyaan') ? 'is-invalid' : ''}}" id="pertanyaan" name="pertanyaan">
-                          @if($errors->has('pertanyaan'))
-                              <div class="invalid-feedback" role="alert">
-                                  <strong>{{ $errors->first('pertanyaan') }}</strong>
-                              </div>
-                          @endif
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Update</button>
-                      </div>
-                    </form>             
-                  </div>
-                </div>
-              </div>
 
             @empty
               <p>tidak ada record</p>
@@ -200,6 +149,28 @@
         </table>
       </div>
     </div>
+
+    <div class="modal fade" id="HapusModal{{$pertanyaan->id}}" tabindex="-1" aria-labelledby="HapusModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form method="post" action="{{url('admin-setting/delete/'.$pertanyaan->id)}}">
+            @csrf
+            <div class="modal-header">
+              <h5 class="modal-title" id="HapusModalLabel">Konfirmasi Hapus</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Apakah anda yakin ingin menghapus data "{{ $pertanyaan->id }}"?
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Ya</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak</button>
+            </div>
+          </form>             
+        </div>
+      </div>
+    </div>
+
 
 </div>
 
