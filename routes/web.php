@@ -31,10 +31,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
         return view('admin/dashboard_admin_setting');
     });
     Route::get('/admin-setting', [PertanyaanController::class, 'index'])->name('admin-setting');
-    Route::get('/admin', function(){
-        return view('admin/dashboard_admin');
-    });
     Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('dashboard-admin.index');
+    Route::get('/dashboard-admin/export', [MhsController::class, 'export'])->name('dashboard-admin.export');
     Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('dashboard-admin.update-action');
 
     Route::get('items/{id}', [PengajuanMahasiswaController::class, 'show'])->name('items.show');

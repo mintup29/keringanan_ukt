@@ -57,6 +57,9 @@
                 </select>
                 </div>
             </div>
+            <div class="col-md-6">
+                <br><a href="{{ route('dashboard-admin.export') }}"><button class="btn btn-success float-right" title="expor rekap admin">Export</button></a>
+            </div>
         </div>
     </div>
 
