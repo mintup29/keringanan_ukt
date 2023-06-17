@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanMahasiswaController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\KuesionerController;
@@ -34,6 +35,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/admin', function(){
         return view('admin/dashboard_admin');
     });
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('dashboard-admin.index');
     Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('dashboard-admin.update-action');
 
