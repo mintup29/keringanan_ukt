@@ -52,13 +52,15 @@ class PertanyaanController extends Controller
      */
     public function show(Pertanyaan $id)
     {
+        $idpertanyaan = $id->id;
+        // dd($id->id);
         $pertanyaan = Pertanyaan::with('jawaban','skor')->find($id);
-        //return view('admin.setting_jawaban_admin')->with($pertanyaan);
-        // return View::make('admin.setting_jawaban_admin')->with('pertanyaan', $pertanyaan); //return the view with posts
+        // //return view('admin.setting_jawaban_admin')->with($pertanyaan);
+        // // return View::make('admin.setting_jawaban_admin')->with('pertanyaan', $pertanyaan); //return the view with posts
 
         $jawabanskor = DB::table('jawabans')
         ->join('skors', 'jawabans.id', '=', 'skors.jawaban_id')
-        ->where('jawabans.pertanyaan_id', '=', $id)
+        ->where('jawabans.pertanyaan_id', '=', $idpertanyaan)
         ->select('*')
         ->groupBy('jawabans.id')
         ->get();
@@ -94,7 +96,7 @@ class PertanyaanController extends Controller
             'pertanyaan'=>$request->pertanyaan,
         ]);
 
-        return redirect('/admin-setting')->with('status', 'Pertanyaan berhasil diupdate!');
+        return redirect('/admin-setting')->with('success', 'Pertanyaan berhasil diupdate!');
         // return View::make('admin.dashboard_admin_setting.blade');
     }
 

@@ -81,8 +81,8 @@
     <!-- Tabel -->
     <div class="row">
       <div class="col-12 col-sm-12">
-        <table class="table-responsive mt-4 border-collapse">
-          <thead class="shadow-sm" style="background-color:#EBF2FC">
+        <table class="table-responsive mt-4 table-hover rounded-corners">
+          <thead class="shadow-sm" style="background-color:white">
             <!-- Judul Tabel -->
             <tr class="rounded-3 text-center p-3">
               <th class="col-5 p-3 col-sm-5 div-title-admin" style="font-size:18px">Pertanyaan</th>
@@ -93,9 +93,10 @@
           </thead>
 
           <tbody style="font-size:14px">
+            
             @forelse($pertanyaan as $pertanyaan)
+              <tr class="shadow-sm" style="background-color:white">
 
-              <tr class="shadow-sm" style="background-color:#EBF2FC">
                 <!-- Isi Pertanyaan -->
                 <td class="p-3">
                   <a href="{{ url('setting-jawaban/'.$pertanyaan->id) }}" style="font-size:15px">

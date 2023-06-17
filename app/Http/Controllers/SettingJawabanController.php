@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Input;
 use App\Models\Jawaban;
 use App\Models\Skor;
 use App\Models\Pertanyaan;
@@ -28,34 +28,38 @@ class SettingJawabanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Pertanyaan $id)
+    public function store(Request $request)
     {
+
+        $request->validate([
+            'pertanyaan_id'=>'required',
+            'jawaban'=>'required',
+            'skor'=>'required',
+            ]);
         
-            
-        // $request->validate([
-        //     'pertanyaan_id'=>'required',
-        //     'jawaban'=>'required|min:3',
-        //     'skor'=>'required',]);
+        $id = $request->pertanyaan_id;
+        $jawaban = $request->jawaban;
+        $skor = $request->skor;
 
-        // // $pertanyaan = Pertanyaan::find($id);
-        // $jawaban = new Jawaban;
-        // $skor = new Skor;
+        $isiJawaban = Jawaban::create([
+            'pertanyaan_id' => $id,
+            'jawaban' => $jawaban,
+        ]);
 
-        // $jawaban->pertanyaan()->associate($pertanyaan);
-        // $skor->pertanyaan()->associate($pertanyaan);
+        $idjawaban = Jawaban::latest('id')->first();
+        $idjawabanlatest = $idjawaban -> id;
 
-        // //objek->namakolom = request->input('nama_input')
-        // // $jawaban->pertanyaan_id = $id;
-        // // $jawaban->jawaban = $request->input('jawaban');
-        // // $skor->skor = $request->input('skor');
+        $isiSkor = Skor::create([
+            'pertanyaan_id' => $id,
+            'jawaban_id' => $idjawabanlatest,
+            'skor' => $skor,
+        ]);
 
-        // // $pertanyaan->save();
-        // $jawaban->save();
-        // // $skor->save();
-        // // dd($request);
+        // dd($request);
 
+        // dd($idjawaban);
         // return View::make('admin.setting_jawaban_admin'); //return the view with posts
-        return redirect()->back()->with('success', 'Pertanyaan berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Jawaban dan Skor berhasil ditambahkan');
     }
 
     /**
@@ -85,8 +89,12 @@ class SettingJawabanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pertanyaan $pertanyaan)
+    public function destroy(Jawaban $id)
     {
-        //
+        // $jawaban = Jawaban::find($id);
+        Jawaban::where('id', $id->id)->first()->delete();
+        // $jawaban->delete();
+
+        return redirect()->back()->with('success', 'Jawaban dan Skor telah dihapus!');
     }
 }
