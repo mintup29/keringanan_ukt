@@ -9,8 +9,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $dataCount = PengajuanMahasiswa::where('Status', 'Accepted')->count();
+        $dataCount = PengajuanMahasiswa::count();
+        $dataNA = PengajuanMahasiswa::where('Status', 'Need Action')->count();
+        $dataAccepted = PengajuanMahasiswa::where('Status', 'Accepted')->count();
+        $dataRejected = PengajuanMahasiswa::where('Status', 'Rejected')->count();
 
-        return view('admin.dashboard', compact('dataCount'));
+        return view('admin.dashboard', compact('dataCount', 'dataNA', 'dataAccepted', 'dataRejected'));
     }
 }

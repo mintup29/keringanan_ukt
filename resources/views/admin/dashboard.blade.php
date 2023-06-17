@@ -39,7 +39,8 @@
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="{{ route('dashboard-admin.index') }}" style="margin-top: 200%"><i class="fa fa-home"></i><p>Home</p></a>
+        <a href="{{ route('dashboard') }}" style="margin-top: 200%"><i class="fa fa-home"></i><p>Home</p></a>
+        <a href="{{ route('dashboard-admin.index') }}"><i class="fa fa-book"></i><p>Pengajuan</p></a>
         <a href="{{ route('admin-setting') }}"><i class="fa fa-gear"></i><p>Settings</p></a>
     </div>
 </head>
@@ -60,19 +61,19 @@
                 <!-- Customers Card -->
                 <div class="col-xxl-4 col-xl-12">
 
-                  <div class="card info-card customers-card">
+                  <div class="card info-card sales-card">
 
                     <div class="card-body">
                       <h5 class="card-title">Jumlah Pengajuan Mahasiswa</h5>
 
                       <div class="d-flex align-items-center">
                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class="fas fa-user"></i>
+                            <i class="fa fa-user-circle"></i>
                         </div>
                     
                         <div class="ps-3 col-md-4">
                           <h6>{{$dataCount}}</h6>
-                          <span class="text-danger small pt-1 fw-bold">{{$dataCount}}</span> <span class="text-muted small pt-2 ps-1">Pengajuan Mahasiswa</span>
+                          <span class="text-success small pt-1 fw-bold">{{$dataCount}}</span> <span class="text-muted small pt-2 ps-1 ">Pengajuan Mahasiswa</span>
 
                         </div>
                       </div>
@@ -82,8 +83,31 @@
 
                 </div><!-- End Customers Card -->
 
+                <!-- Revenue Card -->
+                <div class="col-xxl-4 col-md-4">
+                  <div class="card info-card sales-card">
+
+                    <div class="card-body">
+                      <h5 class="card-title">Need Action <span>| Status</span></h5>
+
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="fa fa-eye"></i>
+                        </div>
+                        
+                        <div class="ps-3 col-md-10">
+                          <h6>{{$dataNA}}</h6>
+                          <span class="text-success small pt-1 fw-bold">{{$dataCount}}</span> <span class="text-muted small pt-2 ps-1 ">Pengajuan Mahasiswa</span>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div><!-- End Revenue Card -->
+
                 <!-- Sales Card -->
-                <div class="col-xxl-4 col-md-6">
+                <div class="col-xxl-4 col-md-4">
                   <div class="card info-card revenue-card">
 
                     <div class="card-body">
@@ -94,7 +118,7 @@
                         <i class="fa fa-check"></i>
                         </div>
                         <div class="ps-3 col-md-10">
-                          <h6>{{$dataCount}}</h6>
+                          <h6>{{$dataAccepted}}</h6>
                           <span class="text-success small pt-1 fw-bold">{{$dataCount}}</span> <span class="text-muted small pt-2 ps-1">Pengajuan Mahasiswa</span>
 
                         </div>
@@ -105,8 +129,8 @@
                 </div><!-- End Sales Card -->
 
                 <!-- Revenue Card -->
-                <div class="col-xxl-4 col-md-6">
-                  <div class="card info-card sales-card">
+                <div class="col-xxl-4 col-md-4">
+                  <div class="card info-card customers-card">
 
                     <div class="card-body">
                       <h5 class="card-title">Rejected <span>| Status</span></h5>
@@ -117,7 +141,7 @@
                         </div>
                         
                         <div class="ps-3 col-md-10">
-                          <h6>{{$dataCount}}</h6>
+                          <h6>{{$dataRejected}}</h6>
                           <span class="text-success small pt-1 fw-bold">{{$dataCount}}</span> <span class="text-muted small pt-2 ps-1 ">Pengajuan Mahasiswa</span>
 
                         </div>
@@ -127,30 +151,7 @@
                   </div>
                 </div><!-- End Revenue Card -->
 
-                <!-- Customers Card -->
-                <div class="col-xxl-4 col-xl-12">
-
-                  <div class="card info-card customers-card">
-
-                    <div class="card-body">
-                      <h5 class="card-title">Need Action <span>| Status</span></h5>
-
-                      <div class="d-flex align-items-center">
-                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                          <i class="bi bi-people"></i>
-                        </div>
-                    
-                        <div class="ps-3 col-md-4">
-                          <h6>{{$dataCount}}</h6>
-                          <span class="text-danger small pt-1 fw-bold">{{$dataCount}}</span> <span class="text-muted small pt-2 ps-1">Pengajuan Mahasiswa</span>
-
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                </div><!-- End Customers Card -->
+                
               
             </div><!-- End Left side columns -->
 

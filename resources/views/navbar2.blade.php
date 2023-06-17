@@ -21,7 +21,8 @@
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="{{ route('dashboard-admin.index') }}" style="margin-top: 200%"><i class="fa fa-home"></i><p>Home</p></a>
+        <a href="{{ route('dashboard') }}" style="margin-top: 200%"><i class="fa fa-home"></i><p>Home</p></a>
+        <a href="{{ route('dashboard-admin.index') }}"><i class="fa fa-book"></i><p>Pengajuan</p></a>
         <a href="{{ route('admin-setting') }}"><i class="fa fa-gear"></i><p>Settings</p></a>
     </div>
     <!-- end navbar -->
