@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanMahasiswaController;
 use App\Http\Controllers\PertanyaanController;
+use App\Http\Controllers\SettingJawabanController;
 use App\Http\Controllers\KuesionerController;
 use App\Http\Controllers\MhsController;
 use App\Http\Controllers\AuthController;
@@ -39,12 +40,17 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('dashboard-admin.index');
+    Route::get('/dashboard-admin/export', [MhsController::class, 'export'])->name('dashboard-admin.export');
     Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('dashboard-admin.update-action');
 
     Route::get('items/{id}', [PengajuanMahasiswaController::class, 'show'])->name('items.show');
     
     Route::post('tambah-pertanyaan', [PertanyaanController::class, 'store']);
     Route::get('/setting-jawaban/{id}', [PertanyaanController::class, 'show']);
+    Route::post('admin-setting/delete/{id}', [PertanyaanController::class, 'destroy']);
+    Route::post('admin-setting/update/{id}', [PertanyaanController::class, 'update']);
+    Route::post('setting-jawaban/delete/{id}', [SettingJawabanController::class, 'destroy']);
+    Route::post('tambah-jawaban', [SettingJawabanController::class, 'store']);
     
 });
 

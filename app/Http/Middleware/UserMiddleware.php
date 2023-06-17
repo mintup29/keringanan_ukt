@@ -20,7 +20,7 @@ class UserMiddleware
             return $next($request);
         }
         else{
-            return redirect('/admin');
+            return redirect('/dashboard-admin');
         }
         if (empty(Auth::user())){
             return redirect('/home');
