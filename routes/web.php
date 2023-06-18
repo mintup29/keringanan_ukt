@@ -46,6 +46,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::post('admin-setting/update/{id}', [PertanyaanController::class, 'update']);
     Route::post('setting-jawaban/delete/{id}', [SettingJawabanController::class, 'destroy']);
     Route::post('tambah-jawaban', [SettingJawabanController::class, 'store']);
+    Route::post('setting-jawaban/update/{id}', [SettingJawabanController::class, 'update']);
     
 });
 

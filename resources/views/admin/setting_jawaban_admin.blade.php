@@ -17,14 +17,15 @@
             <div class="modal-body">
               <table class="table">
                 <tr>
-                  @forelse($pertanyaan as $hiddenpertanyaan)
 
-                    {{-- Hidden input pertanyaan --}}
+                  {{-- Hidden input pertanyaan --}}
+                  @forelse($pertanyaan as $hiddenpertanyaan)
                     <input type="hidden" name="pertanyaan_id" value="{{ $hiddenpertanyaan->id }}">
                   @empty
                     <p>tidak ada record</p>
                   @endforelse
                 </tr>
+                
                 <tr>
                   <td>
 
@@ -202,12 +203,11 @@
                     @csrf
                     <div class="modal-header">
                       <h5 class="modal-title" id="editModalLabel">Update Jawaban dan Skor</h5>
-                      <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                        {{-- <span aria-hidden="true">&times;</span> --}}
-                      </button>
+                      <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <div class="form-group">
+                        {{-- Jawaban --}}
                         <label for="jawaban">Jawaban</label>
                         <input type="text" value="{{$jawabanskor->jawaban}}" class="form-control {{$errors->has('jawaban') ? 'is-invalid' : ''}}" id="jawaban" name="jawaban" required>
                         @if($errors->has('jawaban'))
@@ -215,6 +215,8 @@
                               <strong>{{ $errors->first('jawaban') }}</strong>
                           </div>
                         @endif
+
+                        {{-- Skor --}}
                         <label for="skor">Skor</label>
                         <input type="text" value="{{$jawabanskor->skor}}" class="form-control {{$errors->has('skor') ? 'is-invalid' : ''}}" id="skor" name="skor" required>
                         @if($errors->has('skor'))

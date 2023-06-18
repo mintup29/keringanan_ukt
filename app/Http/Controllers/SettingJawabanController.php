@@ -6,6 +6,7 @@ use App\Models\Jawaban;
 use App\Models\Skor;
 use App\Models\Pertanyaan;
 use Illuminate\Http\Request;
+use DB;
 
 class SettingJawabanController extends Controller
 {
@@ -55,10 +56,6 @@ class SettingJawabanController extends Controller
             'skor' => $skor,
         ]);
 
-        // dd($request);
-
-        // dd($idjawaban);
-        // return View::make('admin.setting_jawaban_admin'); //return the view with posts
         return redirect()->back()->with('success', 'Jawaban dan Skor berhasil ditambahkan');
     }
 
@@ -81,9 +78,28 @@ class SettingJawabanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pertanyaan $pertanyaan)
+    public function update(Request $request, Jawaban $id, Skor $idskor)
     {
-        //
+        $request->validate([
+            'jawaban' => 'required',
+            'skor' => 'required',
+        ]);
+
+        $jawaban = Jawaban::find($id);
+        $skor = Skor::find($id);
+
+        $jawaban->toQuery()->update([
+            'jawaban'=>$request->jawaban,
+        ]);
+
+        $skor->toQuery()->update([
+            'skor'=>$request->skor,
+        ]);
+
+        // dd($skor);
+
+        return redirect()->back()->with('success', 'Jawaban dan Skor berhasil diupdate!');
+        // return View::make('admin.dashboard_admin_setting.blade');
     }
 
     /**
@@ -91,9 +107,7 @@ class SettingJawabanController extends Controller
      */
     public function destroy(Jawaban $id)
     {
-        // $jawaban = Jawaban::find($id);
         Jawaban::where('id', $id->id)->first()->delete();
-        // $jawaban->delete();
 
         return redirect()->back()->with('success', 'Jawaban dan Skor telah dihapus!');
     }
