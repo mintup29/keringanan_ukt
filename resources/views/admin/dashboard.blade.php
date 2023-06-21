@@ -50,6 +50,22 @@
         <div class="pagetitle">
           <h1>Dashboard</h1>
         </div><!-- End Page Title -->
+    
+        <div class="col-md-4">
+                    <p class="mb-1">Filter by Year</p>
+                    <form action="{{ route('dashboard') }}" method="GET">
+                        <div class="form-group">
+                            <select name="year" class="form-control" onchange="this.form.submit()">
+                                <option value="">All</option>
+                                @foreach($years as $year)
+                                    <option value="{{ $year }}" {{ Request::get('year') == $year ? 'selected' : '' }}>{{ $year }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </form>
+        </div>
+
+        
 
         <section class="section dashboard">
           <div class="row">
@@ -59,29 +75,34 @@
               <div class="row">
 
                 <!-- Customers Card -->
+                
                 <div class="col-xxl-4 col-xl-12">
-
-                  <div class="card info-card sales-card">
-
-                    <div class="card-body">
-                      <h5 class="card-title">Jumlah Pengajuan Mahasiswa</h5>
-
-                      <div class="d-flex align-items-center">
-                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class="fa fa-user-circle"></i>
-                        </div>
+                  <a href="{{ route('dashboard-admin.index') }}" style="text-decoration: none;">
                     
-                        <div class="ps-3 col-md-4">
-                          <h6>{{$dataCount}}</h6>
-                          <span class="text-success small pt-1 fw-bold">{{$dataCount}}</span> <span class="text-muted small pt-2 ps-1 ">Pengajuan Mahasiswa</span>
-
+                    <div class="card info-card sales-card">
+  
+                      <div class="card-body">
+                        <h5 class="card-title">Jumlah Pengajuan Mahasiswa</h5>
+  
+                        <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                              <i class="fa fa-user-circle"></i>
+                          </div>
+                      
+                          <div class="ps-3 col-md-4">
+                            <h6>{{$dataCount}}</h6>
+                            <span class="text-success small pt-1 fw-bold">{{$dataCount}}</span> <span class="text-muted small pt-2 ps-1 ">Pengajuan Mahasiswa</span>
+  
+                          </div>
                         </div>
+  
                       </div>
-
                     </div>
-                  </div>
+                  </a>
+
 
                 </div><!-- End Customers Card -->
+                
 
                 <!-- Revenue Card -->
                 <div class="col-xxl-4 col-md-4">
