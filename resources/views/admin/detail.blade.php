@@ -6,25 +6,28 @@
         <h5>Detail Data Keringanan Mahasiswa</h5>
         <table class="table">
             <tr>
-                <td>NIM: {{ $item->status }}</td>
+                <td>Nama: {{ $item->mahasiswa->nama }}</td>
             </tr>
             <tr>
-                <td>Tahun: {{ $item->skor_total }}</td>                    
+                <td>NIM: {{ $item->mahasiswa->nim }}</td>
             </tr>
             <tr>
-                <td>Semester: {{ $item->mahasiswa->nama }}</td>                    
+                <td>Tahun: {{ $item->tahun }}</td>                    
             </tr>
             <tr>
-                <td>Program Studi: {{ $item}}</td>                    
+                <td>Semester: {{ $item->semester }}</td>                    
             </tr>
             <tr>
-                <td>Nominal UKT: {{ $item}}</td>                    
+                <td>Program Studi: {{ $item->mahasiswa->prodi }}</td>                    
             </tr>
             <tr>
-                <td>Kelengkapan Orang Tua: {{ $item}}</td>                    
+                
+                <td>Nominal UKT: {{ $item['jawaban_mahasiswa']->where('id_jawaban', 21)->first()['jawaban']['jawaban'] }}</td> 
+                
             </tr>
+            
             <tr>
-                <td>Apakah Orang Tua Bekerja: {{ $item}}</td>                    
+                <td>Apakah Orang Tua Bekerja: {{ $item['jawaban_mahasiswa']->where('id_jawaban', 9)->first()['jawaban']['jawaban'] }}</td>                    
             </tr>
             <tr>
                 <td>Orang Tua yang Bekerja: {{ $item}}</td>                    

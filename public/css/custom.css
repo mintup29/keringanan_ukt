@@ -123,8 +123,9 @@ table.rounded-corners tr {
     color: white;
     width: 100px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
+    border-radius: 25px;
+    margin-top: 7px;
 }
 
 .red-box {
@@ -132,8 +133,9 @@ table.rounded-corners tr {
     color: white;
     width: 100px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
+    border-radius: 25px;
+    margin-top: 7px;
 }
 
 .green-box {
@@ -141,6 +143,37 @@ table.rounded-corners tr {
     color: white;
     width: 100px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
+    border-radius: 25px;
+    margin-top: 7px;
+}
+
+.status-p{
+    text-align: center;
+    color: white;
+    display: inline-block;
+    border-radius: 25px;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+.status-p.p-processing{
+    background-color: #1096CF;
+}
+.status-p.p-approved{
+    background-color: #30C00C;
+}
+.status-p.p-rejected{
+    background-color: #F80606;
+}
+.btn-detail{
+    border: none;
+    padding: 4px 18px;
+    border-radius: 5%;
+    background-color: #F1D644;
+    font-size: 13px !important;
+    color: black;
+    margin: 0px;
+}
+.btn-detail:hover{
+    background-color: #FFEA7E ;
 }

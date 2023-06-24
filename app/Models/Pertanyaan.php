@@ -32,5 +32,10 @@ class Pertanyaan extends Model
         return $this->hasMany(Skor::class);
     }
 
+    public function pertanyaan_mahasiswa()
+    {
+        return $this->hasMany(JawabanMahasiswa::class, 'id_pertanyaan');
+    }
+
     use HasFactory;
 }
