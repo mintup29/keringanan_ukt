@@ -28,12 +28,15 @@
                 <option value="3">Three</option>
             </select>
         </div>
-        <form action="{{ url('tambah-pertanyaan') }}" method="POST">
+        <form method="POST" action="/isi-kuesioner/{{ Auth::user()->id }}" enctype="multipart/form-data">
+            @csrf
             @foreach ($pertanyaan as $item)
             <div class="row my-4">
                 <div class="col-lg-8 offset-lg-2 shadow rounded-3" style="background-color: white;">
                     <div class="row">
                         <div class="col-12 mx-2 mt-1">
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <input type="hidden" id="id" name="id_pertanyaan[{{ $item -> id }}]" value="{{ $item -> id }}">
                             <p>{{$item -> pertanyaan}}</p>
                         </div>
                     </div>
@@ -41,10 +44,15 @@
                         <div class="col-12 mx-2 my-2">
                             <div class="form-check">
                                 @foreach ($item->jawaban as $jawaban)
-                                <input class="form-check-input" type="radio" name="{{ $jawaban->id }}" id="{{ $jawaban->id }}">
-                                <label class="form-check-label" for="{{ $jawaban->id }}">
+                                    <input class="form-check-input" type="radio" name="id_jawaban[{{ $item->id }}]" id="jawaban{{ $jawaban->id }}" value="{{ $jawaban->id }}" required>
+                                    <label for="jawaban{{ $jawaban->id }}">
                                     <p>{{$jawaban->jawaban}}</p>
+
+                                    
                                 @endforeach
+                                <input class="form-check-input" type="hidden" name="id_skor[{{ $item->id }}]" value="{{ $jawaban->skor->skor }}" required>
+                                    <label for="jawaban{{ $jawaban->skor->skor }}">
+                                    {{-- <p>{{ $jawaban->skor->skor }}</p> --}}
                                 </label>
                             </div>
                         </div>
@@ -53,9 +61,8 @@
             </div>
             @endforeach
             <div class="row">
-                <button class="btn btn-primary rounded-4 col-lg-2 col-sm-4 offset-lg-8 offset-sm-4 my-3" type="button" style="font-style: Poppins; font-weight:bold;">Submit</button>
+                <button class="btn btn-primary rounded-4 col-lg-2 col-sm-4 offset-lg-8 offset-sm-4 my-3" type="submit" style="font-style: Poppins; font-weight:bold;">Submit</button>
             </div>
         </form>
-    </div>
-
+    </div>
 </body>

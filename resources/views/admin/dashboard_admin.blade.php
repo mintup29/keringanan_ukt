@@ -73,6 +73,7 @@
                     <th>Tahun</th>
                     <th>Semester</th>
                     <th>Skor</th>
+                    <th>Potongan</th>
                     <th>Status</th>
                     <th class="col-md-3">Aksi</th>
                 </tr>
@@ -132,16 +133,17 @@
                 {data: 'tahun', name: 'tahun'},
                 {data: 'semester', name: 'semester'},
                 {data: 'skor_total', name: 'skor_total'},
+                {data: 'potongan', name: 'potongan'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             createdRow: function (row, data, index) {
                 if (data['status'] == 'Need Action') {
-                    $('td', row).eq(5).addClass('blue-box');
+                    $('td', row).eq(6).addClass('blue-box');
                 } else if (data['status'] == 'Accepted') {
-                    $('td', row).eq(5).addClass('green-box');
+                    $('td', row).eq(6).addClass('green-box');
                 } else if (data['status'] == 'Rejected') {
-                    $('td', row).eq(5).addClass('red-box');
+                    $('td', row).eq(6).addClass('red-box');
                 } 
             },
         });
