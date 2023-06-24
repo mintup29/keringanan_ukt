@@ -29,7 +29,11 @@
             </select>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <form method="POST" action="{{ url('isi-kuesioner') }}" enctype="multipart/form-data">
+=======
+        <form method="POST" action="/isi-kuesioner/{{ Auth::user()->id }}" enctype="multipart/form-data">
+>>>>>>> e53249a1fc5b8fb8b76eb1d894b41761ad38c379
 =======
         <form method="POST" action="/isi-kuesioner/{{ Auth::user()->id }}" enctype="multipart/form-data">
 >>>>>>> e53249a1fc5b8fb8b76eb1d894b41761ad38c379

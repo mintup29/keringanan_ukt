@@ -17,18 +17,7 @@ use Auth;
 
 class KuesionerController extends Controller
 {
-    // public function index(){
-    //     $pertanyaan
-    //     $pertanyaan = $this->getPertanyaan();
-    //     $jawaban = $this->getJawaban();
-    //     return view('user.kuesioner',compact('pertanyaan','jawaban'));
-    // }
-    // private function getPertanyaan(){
-    //     return Pertanyaan::all();
-    // }
-    // private function getJawaban(){
-    //     return Jawaban::all();
-    // }
+
     public function index(){
         $pertanyaans = Pertanyaan::with('jawaban','skor')->get();
         $user = Auth::user();
@@ -48,9 +37,6 @@ class KuesionerController extends Controller
         }
 
         $jawabanskors = (object)$jawabanskor;
-
-        // dd($jawabanskor);
-        // return View::make('user.kuesioner');
         return View::make('user.kuesioner')->with('pertanyaan', $pertanyaans)->with('jawabanskors', $jawabanskors)->with('user',$user); //return the view with posts
     }
     
@@ -83,6 +69,10 @@ class KuesionerController extends Controller
         //     $jawaban->id_skor = $id_skor;
         //     $jawaban->save();
         // }
+        // dd($request);
+
+        // Assuming you have established a database connection and retrieved the request object
+
         $userId = $request->input('user_id');
         $idPertanyaan = $request->input('id_pertanyaan');
         $idJawaban = $request->input('id_jawaban');
@@ -92,29 +82,44 @@ class KuesionerController extends Controller
             'id_mahasiswa' => $userId,
             'status' => 'Need Action',
             'skor_total' => '0',
-            'semester' => 2,
-            'tahun' => 2023,
+            'potongan' => '0',
+            'semester' => '1',
+            'tahun' => '2021',
         ]);
 
-        $idpengajuan = PengajuanMahasiswa::latest('id')->first();
-        $idpengajuanlast = $idpengajuan -> id;
-        $skor_total = 0;
+        $idPengajuan = PengajuanMahasiswa::latest('id')->first();
+        $idSubmission = $idPengajuan->id;
+
+        $scoreTotal = 0;
+
         foreach ($idPertanyaan as $key => $questionId) {
-            $questionIdea = $questionId;
-            $answerIdea = $idJawaban[$key];
-            $scoreIdea = $idSkor[$key];
-            $skor_total += $scoreIdea;
+            $question = $questionId;
+            $answer = $idJawaban[$key];
+            $score = $idSkor[$key];
+
+            $scoreTotal += $score;
             			
             JawabanMahasiswa::create([
-                'id' => $userId,
+                'id_pengajuan_mahasiswa' => $idPengajuan->id, 
                 'id_mahasiswa' => $userId,
-                'id_pengajuan_mahasiswa' => $idpengajuanlast,
-                'id_pertanyaan' => $questionIdea,
-                'id_jawaban' => $answerIdea,
-                'id_skor' => $scoreIdea,
+                'id_pertanyaan' => $question,
+                'id_jawaban' => $answer,
+                'id_skor' => $score,
             ]);
         }
 
-        return View::make('user.profil');
+        PengajuanMahasiswa::where('id', $idSubmission)->update(['skor_total' => $scoreTotal]);
+
+        $percentage = '';
+        if ($scoreTotal >= 40 && $scoreTotal <= 54) {
+            $percentage = '30%';
+        } elseif ($scoreTotal >= 31 && $scoreTotal < 40) {
+            $percentage = '20%';
+        } elseif ($scoreTotal >= 26 && $scoreTotal < 31) {
+            $percentage = '10%';
+        }
+
+        PengajuanMahasiswa::where('id', $idSubmission)->update(['potongan' => $percentage]);
+        // return redirect()->route('user.profil')->with('success','Kuesioner berhasil diisi');
     }
 }
