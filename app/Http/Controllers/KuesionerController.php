@@ -36,8 +36,17 @@ class KuesionerController extends Controller
         $user_id = $user->id;
         $pertanyaanid = Pertanyaan::select('id') 
         ->get();
+        $mahasiswa = User::find($user_id)->Mahasiswa->first();
+
+        if ($mahasiswa) {
+            $id_user = $mahasiswa->id;
+            // Make use of the $id_user variable as needed
+        }
+
+        // dd($pertanyaan);
 
         $pertanyaanId = $pertanyaanid->toArray();
+        // dd($pertanyaanId);
 
         foreach($pertanyaanId as $idpertanyaan){
             $jawabanskor[] = DB::table('jawabans')
@@ -51,8 +60,9 @@ class KuesionerController extends Controller
         $jawabanskors = (object)$jawabanskor;
 
         // dd($jawabanskor);
+        // dd($pertanyaans->pertanyaan);
         // return View::make('user.kuesioner');
-        return View::make('user.kuesioner')->with('pertanyaan', $pertanyaans)->with('jawabanskors', $jawabanskors)->with('user',$user); //return the view with posts
+        return View::make('user.kuesioner')->with('pertanyaan', $pertanyaans)->with('jawabanskors', $jawabanskors)->with('mahasiswa',$id_user); //return the view with posts
     }
     
     public function store(Request $request, $id){
@@ -64,7 +74,7 @@ class KuesionerController extends Controller
         //     'id_skor'=>'required'
         // ]);
 
-        // dd($request);
+        dd($request);
 
         // Assuming you have established a database connection and retrieved the request object
 

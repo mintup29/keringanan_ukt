@@ -28,14 +28,14 @@
                 <option value="3">Three</option>
             </select>
         </div>
-        <form method="POST" action="/isi-kuesioner/{{ Auth::user()->id }}" enctype="multipart/form-data">
+        <form method="POST" action="/isi-kuesioner/{{ $mahasiswa }}" enctype="multipart/form-data">
             @csrf
             @foreach ($pertanyaan as $item)
             <div class="row my-4">
                 <div class="col-lg-8 offset-lg-2 shadow rounded-3" style="background-color: white;">
                     <div class="row">
                         <div class="col-12 mx-2 mt-1">
-                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <input type="hidden" name="user_id" value="{{ $mahasiswa}}">
                             <input type="hidden" id="id" name="id_pertanyaan[{{ $item -> id }}]" value="{{ $item -> id }}">
                             <p>{{$item -> pertanyaan}}</p>
                         </div>
@@ -53,7 +53,7 @@
                                 <input class="form-check-input" type="hidden" name="id_skor[{{ $item->id }}]" value="{{ $jawaban->skor->skor }}" required>
                                     <label for="jawaban{{ $jawaban->skor->skor }}">
                                     {{-- <p>{{ $jawaban->skor->skor }}</p> --}}
-                                </label>
+                                    </label>
                             </div>
                         </div>
                     </div>
