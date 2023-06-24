@@ -6,65 +6,61 @@
         <h5>Detail Data Keringanan Mahasiswa</h5>
         <table class="table">
             <tr>
-                <td>Nama: {{ $item->mahasiswa->nama }}</td>
+                <td>Nama: </td>
+                <td>{{ $item->mahasiswa->nama }}</td>
             </tr>
             <tr>
-                <td>NIM: {{ $item->mahasiswa->nim }}</td>
+                <td>NIM: </td>
+                <td>{{ $item->mahasiswa->nim }}</td>
             </tr>
             <tr>
-                <td>Tahun: {{ $item->tahun }}</td>                    
+                <td>Tahun: </td>                    
+                <td>{{ $item->tahun }}</td>
             </tr>
             <tr>
-                <td>Semester: {{ $item->semester }}</td>                    
+                <td>Semester: </td>        
+                <td>{{ $item->semester }}</td>            
             </tr>
             <tr>
-                <td>Program Studi: {{ $item->mahasiswa->prodi }}</td>                    
+                <td>Program Studi: </td>                    
+                <td>{{ $item->mahasiswa->prodi }}</td>
             </tr>
+            @foreach($item['jawaban_mahasiswa'] as $items)
             <tr>
-                
-                <td>Nominal UKT: {{ $item['jawaban_mahasiswa']->where('id_jawaban', 21)->first()['jawaban']['jawaban'] }}</td> 
-                
+                <td>{{ $items['pertanyaan']['pertanyaan'] }}</td>
+                <td>{{ $items['jawaban']['jawaban'] }}</td>
             </tr>
-            
-            <tr>
-                <td>Apakah Orang Tua Bekerja: {{ $item['jawaban_mahasiswa']->where('id_jawaban', 9)->first()['jawaban']['jawaban'] }}</td>                    
-            </tr>
-            <tr>
-                <td>Orang Tua yang Bekerja: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Total Pendapatan Orang Tua: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Pekerjaan Orang Tua: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Jabatan dan Golongan Orang Tua: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Jumlah Anak: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Urutan Anak: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Biaya Listrik perBulan: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Jumlah Kendaraan: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Tanggungan Orang Tua: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Status Saudara: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Status Kepemilikan Rumah: {{ $item}}</td>                    
-            </tr>
-            <tr>
-                <td>Deskripsi Kondisi Rumah: {{ $item}}</td>                    
-            </tr>
+            @endforeach
         </table>
+        <div class="mt-5 mb-4">
+            @if ($item->status == 'Need Action')
+                <h6 class="mb-3">Apakah Anda ingin menyetujui pengajuan keringanan UKT mahasiswa <span>{{ $item->mahasiswa->nama }}</span>?</h6>
+                <button onclick="updateAction('{{ $item->id }}', 'Accepted')" class="btn btn-success col-md-3"><i class="fa fa-check"></i></button>
+                <button onclick="updateAction('{{ $item->id }}', 'Rejected')" class="btn btn-danger col-md-3"><i class="fa fa-close"></i></button>
+            @endif
+        </div>
     </div>
 </body>
+
+<script>        
+    function updateAction(modelId, newValue) {
+        $.ajax({
+            url: "{{ url('dashboard-admin') }}" + '/' + modelId + "/update-action",
+            type: 'PUT',
+            data: {
+                _token: "{{ csrf_token() }}",
+                status: newValue
+            },
+            success: function (response) {
+                // Handle success response
+                console.log(response.message);
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                // Handle error response
+                console.error(error);
+            }
+        });
+    }
+    
+</script>

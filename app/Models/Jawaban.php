@@ -11,7 +11,10 @@ class Jawaban extends Model
 {
     protected $primarykey = 'id';
     protected $table = 'jawabans';
-    protected $fillable = ['jawaban'];
+    protected $fillable = [
+        'pertanyaan_id',
+        'jawaban'
+    ];
     /**
      * Get the pertanyaan that owns the Jawaban
      *

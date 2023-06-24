@@ -19,12 +19,6 @@ class PengajuanMahasiswaController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            // $data = PengajuanMahasiswa::join('mahasiswa', 'pengajuan_mahasiswa.id_mahasiswa', '=', 'mahasiswa.id')
-            //     ->join('jawaban_mahasiswa', 'jawaban_mahasiswa.id_mahasiswa', '=', 'pengajuan_mahasiswa.id_mahasiswa')
-            //     // ->select('pengajuan_mahasiswa.id as id_pengajuan', 'mahasiswa.*', 'pengajuan_mahasiswa.skor_total', 'pengajuan_mahasiswa.tahun');
-            //     ->select('*');
-                // ->orderBy('pengajuan_mahasiswa.tahun','desc');
-                // ->orderBy('pengajuan_mahasiswa.semester','desc');
             // $data = PengajuanMahasiswa::select('*');
             // $data = PengajuanMahasiswa::with('mahasiswa', 'jawaban_mahasiswa')->select('*');
             $data = PengajuanMahasiswa::with('mahasiswa');
