@@ -80,53 +80,53 @@ class KuesionerController extends Controller
 
         // Assuming you have established a database connection and retrieved the request object
 
-        $userId = $request->input('user_id');
-        $idPertanyaan = $request->input('id_pertanyaan');
-        $idJawaban = $request->input('id_jawaban');
-        $idSkor = $request->input('id_skor');
+        // $userId = $request->input('user_id');
+        // $idPertanyaan = $request->input('id_pertanyaan');
+        // $idJawaban = $request->input('id_jawaban');
+        // $idSkor = $request->input('id_skor');
 
-        PengajuanMahasiswa::create([
-            'id_mahasiswa' => $userId,
-            'status' => 'Need Action',
-            'skor_total' => '0',
-            'potongan' => '0',
-            'semester' => '1',
-            'tahun' => '2021',
-        ]);
+        // PengajuanMahasiswa::create([
+        //     'id_mahasiswa' => $userId,
+        //     'status' => 'Need Action',
+        //     'skor_total' => '0',
+        //     'potongan' => '0',
+        //     'semester' => '1',
+        //     'tahun' => '2021',
+        // ]);
 
-        $idPengajuan = PengajuanMahasiswa::latest('id')->first();
-        $idSubmission = $idPengajuan->id;
+        // $idPengajuan = PengajuanMahasiswa::latest('id')->first();
+        // $idSubmission = $idPengajuan->id;
 
-        $scoreTotal = 0;
+        // $scoreTotal = 0;
 
-        foreach ($idPertanyaan as $key => $questionId) {
-            $question = $questionId;
-            $answer = $idJawaban[$key];
-            $score = $idSkor[$key];
+        // foreach ($idPertanyaan as $key => $questionId) {
+        //     $question = $questionId;
+        //     $answer = $idJawaban[$key];
+        //     $score = $idSkor[$key];
 
-            $scoreTotal += $score;
+        //     $scoreTotal += $score;
 
-            JawabanMahasiswa::create([
-                'id_pengajuan_mahasiswa' => $idPengajuan->id,
-                'id_mahasiswa' => $userId,
-                'id_pertanyaan' => $question,
-                'id_jawaban' => $answer,
-                'id_skor' => $score,
-            ]);
-        }
+        //     JawabanMahasiswa::create([
+        //         'id_pengajuan_mahasiswa' => $idPengajuan->id,
+        //         'id_mahasiswa' => $userId,
+        //         'id_pertanyaan' => $question,
+        //         'id_jawaban' => $answer,
+        //         'id_skor' => $score,
+        //     ]);
+        // }
 
-        PengajuanMahasiswa::where('id', $idSubmission)->update(['skor_total' => $scoreTotal]);
+        // PengajuanMahasiswa::where('id', $idSubmission)->update(['skor_total' => $scoreTotal]);
 
-        $percentage = '';
-        if ($scoreTotal >= 40 && $scoreTotal <= 54) {
-            $percentage = '30%';
-        } elseif ($scoreTotal >= 31 && $scoreTotal < 40) {
-            $percentage = '20%';
-        } elseif ($scoreTotal >= 26 && $scoreTotal < 31) {
-            $percentage = '10%';
-        }
+        // $percentage = '';
+        // if ($scoreTotal >= 40 && $scoreTotal <= 54) {
+        //     $percentage = '30%';
+        // } elseif ($scoreTotal >= 31 && $scoreTotal < 40) {
+        //     $percentage = '20%';
+        // } elseif ($scoreTotal >= 26 && $scoreTotal < 31) {
+        //     $percentage = '10%';
+        // }
 
-        PengajuanMahasiswa::where('id', $idSubmission)->update(['potongan' => $percentage]);
+        // PengajuanMahasiswa::where('id', $idSubmission)->update(['potongan' => $percentage]);
 
 
 
