@@ -4,10 +4,10 @@ INSERT INTO `users` (`name`, `email`, `password`, `user_type`) VALUES
 ('Jeni Gelas', 'user@y.com', '$2y$10$dPurtqQZb9M.4fNfdYq2Gecl1LSsi7xESAy7UEibz1ndarZGkKDL2', 'User'),
 ('Mintup', 'user@z.com', '$2y$10$dPurtqQZb9M.4fNfdYq2Gecl1LSsi7xESAy7UEibz1ndarZGkKDL2', 'User');
 
-INSERT INTO `mahasiswa` (`nim`, `nama`, `prodi`, `semester`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-('M0525001', 'Joni Piring', 'Informatika', 3, 'user@x.com', NULL, 'user', NULL, NULL, NULL),
-('L0226001', 'Jeni Gelas', 'Bukan Informatika', 1, 'user@y.com', NULL, 'user', NULL, NULL, NULL),
-('M0520002', 'Mintup', 'Informatika', 1, 'user@z.com', NULL, 'user', NULL, NULL, NULL);
+INSERT INTO `mahasiswa` (`id_user`, `nim`, `nama`, `prodi`, `semester`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+('2', 'M0525001', 'Joni Piring', 'Informatika', 3, 'user@x.com', NULL, 'user', NULL, NULL, NULL),
+('3', 'L0226001', 'Jeni Gelas', 'Bukan Informatika', 1, 'user@y.com', NULL, 'user', NULL, NULL, NULL),
+('4','M0520002', 'Mintup', 'Informatika', 1, 'user@z.com', NULL, 'user', NULL, NULL, NULL);
 
 INSERT INTO `pengajuan_mahasiswa` (`id`, `id_mahasiswa`, `status`, `skor_total`, `semester`, `tahun`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Accepted', 10, 1, 2001, NULL, '2023-06-08 07:50:44'),

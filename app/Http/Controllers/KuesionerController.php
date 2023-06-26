@@ -24,8 +24,17 @@ class KuesionerController extends Controller
         $user_id = $user->id;
         $pertanyaanid = Pertanyaan::select('id') 
         ->get();
+        $mahasiswa = User::find($user_id)->Mahasiswa->first();
+
+        if ($mahasiswa) {
+            $id_user = $mahasiswa->id;
+            // Make use of the $id_user variable as needed
+        }
+
+        // dd($pertanyaan);
 
         $pertanyaanId = $pertanyaanid->toArray();
+        // dd($pertanyaanId);
 
         foreach($pertanyaanId as $idpertanyaan){
             $jawabanskor[] = DB::table('jawabans')
@@ -37,7 +46,11 @@ class KuesionerController extends Controller
         }
 
         $jawabanskors = (object)$jawabanskor;
-        return View::make('user.kuesioner')->with('pertanyaan', $pertanyaans)->with('jawabanskors', $jawabanskors)->with('user',$user); //return the view with posts
+
+        // dd($jawabanskor);
+        // dd($pertanyaans->pertanyaan);
+        // return View::make('user.kuesioner');
+        return View::make('user.kuesioner')->with('pertanyaan', $pertanyaans)->with('jawabanskors', $jawabanskors)->with('mahasiswa',$id_user); //return the view with posts
     }
     
     public function store(Request $request, $id){
@@ -70,13 +83,14 @@ class KuesionerController extends Controller
         //     $jawaban->save();
         // }
         // dd($request);
+        dd($request);
 
-        // Assuming you have established a database connection and retrieved the request object
+        //Assuming you have established a database connection and retrieved the request object
 
         $userId = $request->input('user_id');
         $idPertanyaan = $request->input('id_pertanyaan');
         $idJawaban = $request->input('id_jawaban');
-        $idSkor = $request->input('id_skor');
+        $idSkor = $request->input('id_jawaban');
 
         PengajuanMahasiswa::create([
             'id_mahasiswa' => $userId,
@@ -120,6 +134,6 @@ class KuesionerController extends Controller
         }
 
         PengajuanMahasiswa::where('id', $idSubmission)->update(['potongan' => $percentage]);
-        return view('user.profil');
+        return view('user.kuesioner');
     }
 }

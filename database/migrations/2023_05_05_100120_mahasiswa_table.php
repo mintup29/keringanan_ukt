@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_user')->constrained('users')->comment('relasi ke tabel user');
             $table->string('nim');
             $table->string('nama');
             $table->string('prodi');
