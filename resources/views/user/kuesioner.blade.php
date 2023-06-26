@@ -28,15 +28,7 @@
                 <option value="3">Three</option>
             </select>
         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <form method="POST" action="{{ url('isi-kuesioner') }}" enctype="multipart/form-data">
-=======
         <form method="POST" action="/isi-kuesioner/{{ Auth::user()->id }}" enctype="multipart/form-data">
->>>>>>> e53249a1fc5b8fb8b76eb1d894b41761ad38c379
-=======
-        <form method="POST" action="/isi-kuesioner/{{ Auth::user()->id }}" enctype="multipart/form-data">
->>>>>>> e53249a1fc5b8fb8b76eb1d894b41761ad38c379
             @csrf
             @foreach ($pertanyaan as $item)
             <div class="row my-4">
@@ -55,13 +47,8 @@
                                     <input class="form-check-input" type="radio" name="id_jawaban[{{ $item->id }}]" id="jawaban{{ $jawaban->id }}" value="{{ $jawaban->id }}" required>
                                     <label for="jawaban{{ $jawaban->id }}">
                                     <p>{{$jawaban->jawaban}}</p>
-
-                                    
                                 @endforeach
                                 <input class="form-check-input" type="hidden" name="id_skor[{{ $item->id }}]" value="{{ $jawaban->skor->skor }}" required>
-                                    <label for="jawaban{{ $jawaban->skor->skor }}">
-                                    {{-- <p>{{ $jawaban->skor->skor }}</p> --}}
-                                </label>
                             </div>
                         </div>
                     </div>

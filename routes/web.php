@@ -23,11 +23,6 @@ use App\Http\Controllers\AuthController;
 Route::group(['middleware' => 'guest'], function(){
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
-<<<<<<< HEAD
-    
-=======
-    // Route::get('/kuesioner', [KuesionerController::class, 'index']);
->>>>>>> 187f76fbe0bd05ad0e0cd2a5e41d0b93bd1c99d7
 });
 Route::get('/kuesioner', [KuesionerController::class, 'index']);
 
@@ -63,13 +58,10 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
 Route::middleware(['auth', 'isUser'])->group(function(){
     Route::get('/getPengajuan', [PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');
     Route::get('/pengajuan', [MhsController::class, 'mhsDashboard'])->name('pengajuan');
-<<<<<<< HEAD
-    
-=======
     Route::get('/kuesioner', [KuesionerController::class, 'index'])->name('kuesioner');
     Route::post('/isi-kuesioner/{id}', [KuesionerController::class, 'store']);
+    Route::get('/profil', function () {return view('user/profil');});
     // Route::get('/kuesioner', function(){return view('user.kuesioner');})->name('kuesioner');
->>>>>>> 187f76fbe0bd05ad0e0cd2a5e41d0b93bd1c99d7
     Route::get('/pengajuan_2', function(){
         return view('user/profil');
     });

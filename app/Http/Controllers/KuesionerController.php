@@ -120,6 +120,6 @@ class KuesionerController extends Controller
         }
 
         PengajuanMahasiswa::where('id', $idSubmission)->update(['potongan' => $percentage]);
-        // return redirect()->route('user.profil')->with('success','Kuesioner berhasil diisi');
+        return view('user.profil');
     }
 }
