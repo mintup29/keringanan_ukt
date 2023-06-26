@@ -44,16 +44,10 @@
                         <div class="col-12 mx-2 my-2">
                             <div class="form-check">
                                 @foreach ($item->jawaban as $jawaban)
-                                    <input class="form-check-input" type="radio" name="id_jawaban[{{ $item->id }}]" id="jawaban{{ $jawaban->id }}" value="{{ $jawaban->id }}" required>
-                                    <label for="jawaban{{ $jawaban->id }}">
+                                    <input class="form-check-input" type="radio" name="id_jawaban[{{ $item->id }}]" id="jawaban{{ $jawaban->id }}" value="{{ $jawaban->id }},{{ $jawaban->skor->skor }}" required>
                                     <p>{{$jawaban->jawaban}}</p>
-
                                     
                                 @endforeach
-                                <input class="form-check-input" type="hidden" name="id_skor[{{ $item->id }}]" value="{{ $jawaban->skor->skor }}" required>
-                                    <label for="jawaban{{ $jawaban->skor->skor }}">
-                                    {{-- <p>{{ $jawaban->skor->skor }}</p> --}}
-                                    </label>
                             </div>
                         </div>
                     </div>
