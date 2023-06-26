@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanMahasiswaController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\SettingJawabanController;
@@ -35,7 +36,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/admin', function(){
         return view('admin/dashboard_admin');
     });
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('dashboard-admin.index');
+    Route::get('/dashboard-admin/export', [MhsController::class, 'export'])->name('dashboard-admin.export');
     Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('dashboard-admin.update-action');
 
     Route::get('items/{id}', [PengajuanMahasiswaController::class, 'show'])->name('items.show');
@@ -54,6 +59,7 @@ Route::middleware(['auth', 'isUser'])->group(function(){
     Route::get('/getPengajuan', [PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');
     Route::get('/pengajuan', [MhsController::class, 'mhsDashboard'])->name('pengajuan');
     Route::get('/kuesioner', [KuesionerController::class, 'index'])->name('kuesioner');
+    Route::post('/isi-kuesioner/{id}', [KuesionerController::class, 'store']);
     // Route::get('/kuesioner', function(){return view('user.kuesioner');})->name('kuesioner');
     Route::get('/pengajuan_2', function(){
         return view('user/profil');

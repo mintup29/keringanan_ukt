@@ -10,7 +10,7 @@ class PengajuanMahasiswa extends Model
     protected $table = 'pengajuan_mahasiswa';
     protected $primarykey = 'id';
     protected $fillable = [
-      'id_mahasiswa', 'skor_total', 'status', 'tahun', 'semester'
+      'id_mahasiswa', 'skor_total', 'potongan', 'status', 'tahun', 'semester'
     ];
     
     public function mahasiswa()

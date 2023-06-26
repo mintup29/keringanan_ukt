@@ -38,7 +38,8 @@
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="{{ route('dashboard-admin.index') }}" style="margin-top: 200%"><i class="fa fa-home"></i><p>Home</p></a>
+        <a href="{{ route('dashboard') }}" style="margin-top: 200%"><i class="fa fa-home"></i><p>Home</p></a>
+        <a href="{{ route('dashboard-admin.index') }}"><i class="fa fa-book"></i><p>Pengajuan</p></a>
         <a href="{{ route('admin-setting') }}"><i class="fa fa-gear"></i><p>Settings</p></a>
     </div>
 </head>
@@ -57,6 +58,9 @@
                 </select>
                 </div>
             </div>
+            <div class="col-md-6">
+                <br><a href="{{ route('dashboard-admin.export') }}"><button class="btn btn-success float-right" title="expor rekap admin">Export</button></a>
+            </div>
         </div>
     </div>
 
@@ -69,6 +73,7 @@
                     <th>Tahun</th>
                     <th>Semester</th>
                     <th>Skor</th>
+                    <th>Potongan</th>
                     <th>Status</th>
                     <th class="col-md-3">Aksi</th>
                 </tr>
@@ -128,16 +133,17 @@
                 {data: 'tahun', name: 'tahun'},
                 {data: 'semester', name: 'semester'},
                 {data: 'skor_total', name: 'skor_total'},
+                {data: 'potongan', name: 'potongan'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             createdRow: function (row, data, index) {
                 if (data['status'] == 'Need Action') {
-                    $('td', row).eq(5).addClass('blue-box');
+                    $('td', row).eq(6).addClass('blue-box');
                 } else if (data['status'] == 'Accepted') {
-                    $('td', row).eq(5).addClass('green-box');
+                    $('td', row).eq(6).addClass('green-box');
                 } else if (data['status'] == 'Rejected') {
-                    $('td', row).eq(5).addClass('red-box');
+                    $('td', row).eq(6).addClass('red-box');
                 } 
             },
         });

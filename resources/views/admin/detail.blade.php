@@ -25,62 +25,42 @@
                 <td>Program Studi: </td>                    
                 <td>{{ $item->mahasiswa->prodi }}</td>
             </tr>
+            @foreach($item['jawaban_mahasiswa'] as $items)
             <tr>
-                <td>Nominal UKT: </td> 
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 1)->first()['jawaban']['jawaban'] }}</td>
+                <td>{{ $items['pertanyaan']['pertanyaan'] }}</td>
+                <td>{{ $items['jawaban']['jawaban'] }}</td>
             </tr>
-            <tr>
-                <td>Keadaan Orang Tua: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 5)->first()['jawaban']['jawaban'] }}</td>
-            </tr>
-            <tr>
-                <td>Pekerjaan Orang Tua: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 9)->first()['jawaban']['jawaban'] }}</td>
-            </tr>
-            <tr>
-                <td>Kedua Orang Tua Bekerja: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 13)->first()['jawaban']['jawaban'] }}</td>
-            </tr>
-            <tr>
-                <td>Orang Tua yang Bekerja: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 15)->first()['jawaban']['jawaban'] }}</td>
-            </tr>
-            <tr>
-                <td>Pendapatan Orang Tua: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 17)->first()['jawaban']['jawaban'] }}</td>
-            </tr>
-            <tr>
-                <td>Jumlah Anak: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 21)->first()['jawaban']['jawaban'] }}</td>
-            </tr>
-            <tr>
-                <td>Urutan Anak: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 25)->first()['jawaban']['jawaban'] }}</td>
-            </tr>
-            <tr>
-                <td>Tanggungan Orang Tua: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 29)->first()['jawaban']['jawaban'] }}</td>
-            </tr>
-            <tr>
-                <td>Status Saudara: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 33)->first()['jawaban']['jawaban'] }}</td>
-                </tr>
-            <tr>
-                <td>Status Kepemilikan Rumah: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 37)->first()['jawaban']['jawaban'] }}</td>
-                </tr>
-            <tr>
-                <td>Deskripsi Kondisi Rumah: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 41)->first()['jawaban']['jawaban'] }}</td>
-                </tr>
-            <tr>
-                <td>Biaya Listrik perBulan: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 44)->first()['jawaban']['jawaban'] }}</td>
-                </tr>
-            <tr>
-                <td>Jumlah Kendaraan: </td>                    
-                <td>{{ $item['jawaban_mahasiswa']->where('id_jawaban', 48)->first()['jawaban']['jawaban'] }}</td>
-                </tr>
+            @endforeach
         </table>
+        <div class="mt-5 mb-4">
+            @if ($item->status == 'Need Action')
+                <h6 class="mb-3">Apakah Anda ingin menyetujui pengajuan keringanan UKT mahasiswa <span>{{ $item->mahasiswa->nama }}</span>?</h6>
+                <button onclick="updateAction('{{ $item->id }}', 'Accepted')" class="btn btn-success col-md-3"><i class="fa fa-check"></i></button>
+                <button onclick="updateAction('{{ $item->id }}', 'Rejected')" class="btn btn-danger col-md-3"><i class="fa fa-close"></i></button>
+            @endif
+        </div>
     </div>
 </body>
+
+<script>        
+    function updateAction(modelId, newValue) {
+        $.ajax({
+            url: "{{ url('dashboard-admin') }}" + '/' + modelId + "/update-action",
+            type: 'PUT',
+            data: {
+                _token: "{{ csrf_token() }}",
+                status: newValue
+            },
+            success: function (response) {
+                // Handle success response
+                console.log(response.message);
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                // Handle error response
+                console.error(error);
+            }
+        });
+    }
+    
+</script>
