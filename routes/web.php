@@ -58,6 +58,7 @@ Route::middleware(['auth', 'isUser'])->group(function(){
     Route::get('/pengajuan_2', function(){
         return view('user/profil');
     });
+    Route::post('isi-kuesioner', [KuesionerController::class, 'store']);
 });
 
 Route::get('/home', function () {return view('landing-page');})->name('home');
