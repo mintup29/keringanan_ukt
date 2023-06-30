@@ -18,7 +18,7 @@ class PertanyaanController extends Controller
     {
         //
         $pertanyaans = Pertanyaan::with('jawaban', 'skor')->get();
-        
+
         return View::make('admin.dashboard_admin_setting')->with('pertanyaan', $pertanyaans); //return the view with posts
     }
 
@@ -35,7 +35,7 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['pertanyaan'=>'required|min:3',]);
+        $request->validate(['pertanyaan' => 'required|min:3',]);
 
         $pertanyaan = new Pertanyaan;
 
@@ -54,16 +54,16 @@ class PertanyaanController extends Controller
     {
         $idpertanyaan = $id->id;
         // dd($id->id);
-        $pertanyaan = Pertanyaan::with('jawaban','skor')->find($id);
+        $pertanyaan = Pertanyaan::with('jawaban', 'skor')->find($id);
         // //return view('admin.setting_jawaban_admin')->with($pertanyaan);
         // // return View::make('admin.setting_jawaban_admin')->with('pertanyaan', $pertanyaan); //return the view with posts
 
         $jawabanskor = DB::table('jawabans')
-        ->join('skors', 'jawabans.id', '=', 'skors.jawaban_id')
-        ->where('jawabans.pertanyaan_id', '=', $idpertanyaan)
-        ->select('*')
-        ->groupBy('jawabans.id')
-        ->get();
+            ->join('skors', 'jawabans.id', '=', 'skors.jawaban_id')
+            ->where('jawabans.pertanyaan_id', '=', $idpertanyaan)
+            ->select('*')
+            ->groupBy('jawabans.id')
+            ->get();
 
         // return View::make('admin.setting_jawaban_admin'); //return the view with posts
 
@@ -93,7 +93,7 @@ class PertanyaanController extends Controller
         // dd($pertanyaan);
 
         $pertanyaan->toQuery()->update([
-            'pertanyaan'=>$request->pertanyaan,
+            'pertanyaan' => $request->pertanyaan,
         ]);
 
         return redirect('/admin-setting')->with('success', 'Pertanyaan berhasil diupdate!');

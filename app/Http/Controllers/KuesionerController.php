@@ -51,6 +51,7 @@ class KuesionerController extends Controller
 
         $jawabanskors = (object) $jawabanskor;
 
+
         // foreach ($jawabanskor as $collection) {
         //     foreach ($collection as $item) {
         //         $skor = $item->skor;
@@ -107,6 +108,7 @@ class KuesionerController extends Controller
         $idJawaban = $request->input('id_jawaban');
         $idSkor = $request->input('id_jawaban');
         $semester = $request->input('semester');
+        $tahun = $request->input('tahun');
 
         // Initialize an empty array to store the updated skor values
         $skor = [];
@@ -137,7 +139,7 @@ class KuesionerController extends Controller
             'skor_total' => '0',
             'potongan' => '0',
             'semester' => $semester,
-            'tahun' => (int) $request['tahun'],
+            'tahun' => $tahun,
         ]);
 
         $idPengajuan = PengajuanMahasiswa::latest('id')->first();
