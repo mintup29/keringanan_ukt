@@ -7,29 +7,19 @@ use App\Models\JawabanMahasiswa;
 use App\Models\Mahasiswa;
 use App\Models\PengajuanMahasiswa;
 use App\Models\Pertanyaan;
+use App\Models\Foto;
 use App\Models\Skor;
 use App\Models\User;
-use App\Models\Cek;
 use View;
 use Illuminate\Http\Request;
 use App\Post;
 use DB;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class KuesionerController extends Controller
 {
-    // public function index(){
-    //     $pertanyaan
-    //     $pertanyaan = $this->getPertanyaan();
-    //     $jawaban = $this->getJawaban();
-    //     return view('user.kuesioner',compact('pertanyaan','jawaban'));
-    // }
-    // private function getPertanyaan(){
-    //     return Pertanyaan::all();
-    // }
-    // private function getJawaban(){
-    //     return Jawaban::all();
-    // }
+
     public function index()
     {
         $pertanyaans = Pertanyaan::with('jawaban', 'skor')->get();
@@ -51,12 +41,12 @@ class KuesionerController extends Controller
 
         foreach ($pertanyaanId as $idpertanyaan) {
             $jawabanskor[] = DB::table('jawabans')
-            ->join('pertanyaans', 'pertanyaans.id', '=', 'jawabans.pertanyaan_id')
-            ->join('skors', 'jawabans.id', '=', 'skors.jawaban_id')
-            ->where('jawabans.pertanyaan_id', '=', $idpertanyaan)
-            ->select('*')
-            // ->groupBy('jawabans.id')
-            ->get();
+                ->join('pertanyaans', 'pertanyaans.id', '=', 'jawabans.pertanyaan_id')
+                ->join('skors', 'jawabans.id', '=', 'skors.jawaban_id')
+                ->where('jawabans.pertanyaan_id', '=', $idpertanyaan)
+                ->select('*')
+                // ->groupBy('jawabans.id')
+                ->get();
         }
 
         $jawabanskors = (object) $jawabanskor;
@@ -79,20 +69,44 @@ class KuesionerController extends Controller
     public function store(Request $request, $id)
     {
 
-        // $request->validate([
+        $request->validate([
+            'foto' => 'required|file|image',
+            'tahun' => 'required|integer',
+        ]);
 
-        //     'id_jawaban'=>'required',
-        //     'id_pertanyaan'=>'required',
-        //     'id_skor'=>'required'
-        // ]);
+        $path = Storage::disk('public')->putFile('foto', $request->file('foto'));
 
+        // $pertanyaan = Pertanyaan::count();
+
+        // for($i=1; $i <= $pertanyaan; $i++) {
+        //     $id_jawaban = $request->input('id_jawaban.$i');
+        //     $id_pertanyaan = $request->input('id_pertanyaan.$i');
+        //     $id_skor = $request->input('id_skor.$i');
+        //     $id_mahasiswa = $request->input('user_id');
+
+        //     $jawaban = new JawabanMahasiswa;
+        //     // $user = User::where('id', $id)->get('name');
+        //     // $mahasiswa = Mahasiswa::where('nama', $user)->get('id');
+        //     // $pengajuan_mahasiswa = PengajuanMahasiswa::where('id_mahasiswa', $mahasiswa)->get();
+
+        //     $jawaban->id_mahasiswa = $id_mahasiswa;
+        //     $jawaban->id_pengajuan_mahasiswa = 0;
+        //     $jawaban->id_pertanyaan = $id_pertanyaan;
+        //     $jawaban->id_jawaban = $id_jawaban;
+        //     $jawaban->id_skor = $id_skor;
+        //     $jawaban->save();
+        // }
+        // dd($request);
+        // dd($request);
         // dd($request);
 
-        // Assuming you have established a database connection and retrieved the request object
+        //Assuming you have established a database connection and retrieved the request object
 
         $userId = $request->input('user_id');
         $idPertanyaan = $request->input('id_pertanyaan');
         $idJawaban = $request->input('id_jawaban');
+        $idSkor = $request->input('id_jawaban');
+        $semester = $request->input('semester');
 
         // Initialize an empty array to store the updated skor values
         $skor = [];
@@ -111,46 +125,50 @@ class KuesionerController extends Controller
         // $selectedSkor = [];
         // foreach ($idJawaban as $jawabanId => $selectedJawaban) {
         //     $selectedSkor = $idSkor[$jawabanId];
-        
+
         //     // Perform database saving logic here using $jawabanId, $selectedJawaban, and $selectedSkor
         // }
 
         // dd($selectedSkor);
 
-        // PengajuanMahasiswa::create([
-        //     'id_mahasiswa' => $userId,
-        //     'status' => 'Need Action',
-        //     'skor_total' => '0',
-        //     'potongan' => '0',
-        //     'semester' => '1',
-        //     'tahun' => '2021',
-        // ]);
+        PengajuanMahasiswa::create([
+            'id_mahasiswa' => $userId,
+            'status' => 'Need Action',
+            'skor_total' => '0',
+            'potongan' => '0',
+            'semester' => $semester,
+            'tahun' => (int) $request['tahun'],
+        ]);
 
-        // $idPengajuan = PengajuanMahasiswa::latest('id')->first();
-        // $idSubmission = $idPengajuan->id;
+        $idPengajuan = PengajuanMahasiswa::latest('id')->first();
+        $idSubmission = $idPengajuan->id;
 
-        // $scoreTotal = 0;
+        $scoreTotal = 0;
 
         foreach ($idPertanyaan as $key => $questionId) {
             $question = $questionId;
             $answer = $idJawaban[$key];
             $score = $skor[$key];
 
-        //     $scoreTotal += $score;
+            $scoreTotal += $score;
 
-        //     JawabanMahasiswa::create([
-        //         'id_pengajuan_mahasiswa' => $idPengajuan->id,
-        //         'id_mahasiswa' => $userId,
-        //         'id_pertanyaan' => $question,
-        //         'id_jawaban' => $answer,
-        //         'id_skor' => $score,
-        //     ]);
-        // }
+            JawabanMahasiswa::create([
+                'id_pengajuan_mahasiswa' => $idPengajuan->id,
+                'id_mahasiswa' => $userId,
+                'id_pertanyaan' => $question,
+                'id_jawaban' => $answer,
+                'id_skor' => $score,
+            ]);
+        }
 
+        $foto = Foto::create([
+            'id_pengajuan' => $idSubmission,
+            'foto' => $path
+        ]);
         // foreach ($idJawaban as $jawabanId => $selectedJawaban) {
         //     $selectedSkor = $idSkor[$jawabanId];
         //     JawabanMahasiswa::where('id_jawaban', $jawabanId)->update(['id_skor' => $selectedSkor]);
-        
+
         //     // Perform database saving logic here using $jawabanId, $selectedJawaban, and $selectedSkor
         // }
 
@@ -167,37 +185,13 @@ class KuesionerController extends Controller
             $percentage = '0%';
         }
 
-        // PengajuanMahasiswa::where('id', $idSubmission)->update(['potongan' => $percentage]);
+        PengajuanMahasiswa::where('id', $idSubmission)->update(['potongan' => $percentage]);
+        // return view('user.kuesioner');
 
 
 
         // return redirect()->route('user.profil')->with('success','Kuesioner berhasil diisi');
-
-
-        // $pertanyaan = Pertanyaan::count();
-
-        // for($i=1; $i <= $pertanyaan; $i++) {
-        //     $id_jawaban = $request->input('id_jawaban.$i');
-        //     $id_pertanyaan = $request->input('id_pertanyaan.$i');
-        //     $id_skor = $request->input('id_skor.$i');
-        //     $id_mahasiswa = $request->input('user_id');
-
-        //     $jawaban = new JawabanMahasiswa;
-        //     $user = User::where('id', $id)->get('name');
-        //     $mahasiswa = Mahasiswa::where('nama', $user)->get('id');
-        //     // $pengajuan_mahasiswa = PengajuanMahasiswa::where('id_mahasiswa', $mahasiswa)->get();
-
-        //     $jawaban->id_mahasiswa = $id_mahasiswa;
-        //     $jawaban->id_pengajuan_mahasiswa = 0;
-        //     $jawaban->id_pertanyaan = $id_pertanyaan;
-        //     $jawaban->id_jawaban = $id_jawaban;
-        //     $jawaban->id_skor = $id_skor;
-
-        //     $jawaban->save();
-        // }
-
-        // dd($request);
-        return redirect()->route('pengajuan')->with('success','Kuesioner berhasil diisi');
+        return redirect()->route('pengajuan')->with('success', 'Kuesioner berhasil diisi');
         // $email = Auth::user()->email;
         // $pengajuan = DB::select('select p.* from pengajuan_mahasiswa as p left join mahasiswa as m on m.id = p.id_mahasiswa where m.email ="'.$email.'"');
         // $profile = DB::table('mahasiswa')->where('email', $email)->get();
