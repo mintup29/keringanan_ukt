@@ -10,9 +10,14 @@ class PengajuanMahasiswa extends Model
     protected $table = 'pengajuan_mahasiswa';
     protected $primarykey = 'id';
     protected $fillable = [
-      'id_mahasiswa', 'skor_total', 'potongan', 'status', 'tahun', 'semester'
+        'id_mahasiswa',
+        'skor_total',
+        'potongan',
+        'status',
+        'tahun',
+        'semester'
     ];
-    
+
     public function mahasiswa()
     {
         return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
@@ -32,8 +37,8 @@ class PengajuanMahasiswa extends Model
     // {
     //     return $this->belongsTo(Pertanyaan::class, 'id_pertanyaan');
     // }
-    
-    
+
+
 
 
     // public function mahasiswa(): BelongsTo
@@ -41,7 +46,7 @@ class PengajuanMahasiswa extends Model
     //     return $this->belongsTo(Mahasiswa::class);
     // }
 
-    
+
 
     use HasFactory;
 }
