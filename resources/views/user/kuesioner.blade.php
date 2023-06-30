@@ -48,7 +48,6 @@
                                     <label for="jawaban{{ $jawaban->id }}">
                                     <p>{{$jawaban->jawaban}}</p>
                                 @endforeach
-                                <input class="form-check-input" type="text" name="id_skor[{{ $item->id }}]" value="{{ $jawaban->skor->skor }}" required>
                             </div>
                         </div>
                     </div>
