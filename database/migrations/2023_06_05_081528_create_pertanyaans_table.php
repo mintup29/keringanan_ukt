@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -33,7 +32,6 @@ return new class extends Migration
         DB::table('pertanyaans')->insert(['pertanyaan' => 'Deskripsikan kondisi rumah Saudara (misal tembok permanen/semi permanen, lantai keramik/tidak, Luas tanah/bangunan)']);
         DB::table('pertanyaans')->insert(['pertanyaan' => 'Biaya listrik per bulan']);
         DB::table('pertanyaans')->insert(['pertanyaan' => 'Berapa jumlah kendaraan yang dimiliki orang tua/keluarga?']);
-        DB::table('pertanyaans')->insert(['pertanyaan' => 'Foto rumah Anda']);
     }
 
     /**

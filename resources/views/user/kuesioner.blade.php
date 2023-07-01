@@ -15,17 +15,13 @@
             </div>
         </div>
         <div class="row">
-            <select class="form-select shadow col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto" aria-label="Default select example">
-                <option selected>Pilih Tahun</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <select class="form-select shadow col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto" aria-label="Default select example">
+            <div class="input-group col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto">
+                <input type="text" name='tahun' class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <select name='semester' class="form-select shadow col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto" aria-label="Default select example">
                 <option selected>Pilih Semester</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Ganjil</option>
+                <option value="2">Genap</option>
             </select>
         </div>
         <form method="POST" action="/isi-kuesioner/{{ $mahasiswa }}" enctype="multipart/form-data">
@@ -54,8 +50,19 @@
                 </div>
             </div>
             @endforeach
+            <div class="row my-4">
+                <div class="col-lg-8 offset-lg-2 shadow rounded-3 p-3" style="background-color: white;">
+                    <label for="foto">Foto Rumah</label>
+                    <input type="file" class="form-control {{$errors->has('foto') ? 'is-invalid' : ''}} mb-3" id="foto" name="foto">
+                    @if($errors->has('foto'))
+                        <div class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('foto') }}</strong>
+                        </div>
+                    @endif
+                </div>
+            </div>
             <div class="row">
-                <button class="btn btn-primary rounded-4 col-lg-2 col-sm-4 offset-lg-8 offset-sm-4 my-3" type="submit" style="font-style: Poppins; font-weight:bold;">Submit</button>
+                <button class="btn btn-primary rounded-4 col-lg-2 col-sm-4 offset-lg-8 offset-sm-4 my-3" id="tombol_simpan" type="submit" style="font-style: Poppins; font-weight:bold;">Submit</button>
             </div>
         </form>
     </div>

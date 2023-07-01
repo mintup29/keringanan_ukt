@@ -10,7 +10,11 @@ class JawabanMahasiswa extends Model
     protected $primarykey = 'id';
     protected $table = 'jawaban_mahasiswa';
     protected $fillable = [
-      'id_mahasiswa', 'id_pengajuan_mahasiswa', 'id_jawaban', 'id_pertanyaan', 'id_skor'
+        'id_mahasiswa',
+        'id_pengajuan_mahasiswa',
+        'id_jawaban',
+        'id_pertanyaan',
+        'id_skor'
     ];
 
     public function mahasiswa()
@@ -18,7 +22,7 @@ class JawabanMahasiswa extends Model
         return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
     }
 
-    
+
     public function jawaban()
     {
         return $this->belongsTo(Jawaban::class, 'id_jawaban');
@@ -29,6 +33,11 @@ class JawabanMahasiswa extends Model
         return $this->belongsTo(Pertanyaan::class, 'id_pertanyaan');
     }
 
-    
+    public function foto()
+    {
+        return $this->hasMany(Foto::class, 'id');
+    }
+
+
     use HasFactory;
 }
