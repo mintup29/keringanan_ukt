@@ -29,7 +29,7 @@
                     <td>{{ $row->tahun }}</td>
                     <td>{{ $row->semester}}</td>
                     <td>@if($row->status == "Rejected")
-                            <div class="status-p p-rejected">Processing</div>
+                            <div class="status-p p-rejected">Rejected</div>
                         @elseif($row->status == "Accepted")
                             <div class="status-p p-approved"> Accepted </div>
                         @else

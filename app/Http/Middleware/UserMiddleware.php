@@ -23,7 +23,7 @@ class UserMiddleware
             return redirect('/dashboard-admin');
         }
         if (empty(Auth::user())){
-            return redirect('/home');
+            return redirect('/kuesioner');
         }
     }
 }

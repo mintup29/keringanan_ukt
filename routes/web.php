@@ -66,7 +66,6 @@ Route::middleware(['auth', 'isUser'])->group(function () {
     // Route::get('/kuesioner', function(){return view('user.kuesioner');})->name('kuesioner');
 });
 
-Route::get('/home', function () {
-    return view('landing-page'); })->name('home');
+
 Route::get('/', function () {
     return view('landing-page'); });
