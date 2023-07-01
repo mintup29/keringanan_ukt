@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\export;
+use App\Models\PengajuanMahasiswa;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Exports\PengajuanExport;
@@ -22,5 +23,10 @@ class MhsController extends Controller
 
     public function export(){
         return Excel::download(new PengajuanExport, 'pengajuan.xlsx');
+    }
+
+    public function mhsDetail($id){
+        $item = PengajuanMahasiswa::with('mahasiswa', 'jawaban_mahasiswa',  'jawaban_mahasiswa.pertanyaan', 'jawaban_mahasiswa.jawaban')->findOrFail($id);
+        return view('user.detail', compact('item'));
     }
 }

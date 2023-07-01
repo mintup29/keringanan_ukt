@@ -60,12 +60,10 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 Route::middleware(['auth', 'isUser'])->group(function () {
     Route::get('/getPengajuan', [PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');
     Route::get('/pengajuan', [MhsController::class, 'mhsDashboard'])->name('pengajuan');
+    Route::get('/pengajuan/items/{id}', [MhsController::class, 'mhsDetail'])->name('items.mhs');
     Route::get('/kuesioner', [KuesionerController::class, 'index'])->name('kuesioner');
     Route::post('/isi-kuesioner/{id}', [KuesionerController::class, 'store']);
     // Route::get('/kuesioner', function(){return view('user.kuesioner');})->name('kuesioner');
-    Route::get('/pengajuan_2', function () {
-        return view('user/profil');
-    });
 });
 
 Route::get('/home', function () {

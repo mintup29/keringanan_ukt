@@ -36,7 +36,7 @@
                             <div class="status-p p-processing">Need Action</div>
                         @endif
                     </td>
-                    <td><button class="btn-detail">Detail</button></td>
+                    <td><a href="{{route('items.mhs', [$row->id])}}"><button class="btn-detail">Detail</button></a></td>
                 </tr>
             @endforeach
         </table>
