@@ -85,16 +85,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12">
-                        <a href="https://sso.uns.ac.id/module.php/uns/oauth2/google.php" class="btn btn-danger btn-block" style="font-size: 15px;">
-                            <i class="fa fa-google"></i>
-                            &nbsp;
-                            Login Mahasiswa MBKM dengan Google
-                        </a>
+                    <div class="col-xs-4">
+                        <a href="{{route('register')}}"><button class="btn btn-danger btn-user btn-block" tabindex="4">Daftar</button></a>
                     </div>
                 </div>
-
-                
                 <hr/>
             </div>
             <div class="login-footer">
