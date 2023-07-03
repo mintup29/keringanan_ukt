@@ -40,7 +40,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     });
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+    Route::post('/dashboard', [DashboardController::class, 'addHistory'])->name('add-history');
     Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('dashboard-admin.index');
     Route::get('/dashboard-admin/export', [MhsController::class, 'export'])->name('dashboard-admin.export');
     Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('dashboard-admin.update-action');
@@ -63,9 +63,9 @@ Route::middleware(['auth', 'isUser'])->group(function () {
     Route::get('/pengajuan/items/{id}', [MhsController::class, 'mhsDetail'])->name('items.mhs');
     Route::get('/kuesioner', [KuesionerController::class, 'index'])->name('kuesioner');
     Route::post('/isi-kuesioner/{id}', [KuesionerController::class, 'store']);
+
     // Route::get('/kuesioner', function(){return view('user.kuesioner');})->name('kuesioner');
 });
-
 
 Route::get('/', function () {
     return view('landing-page'); });

@@ -64,19 +64,19 @@
                         </div>
                     </form>
         </div>
-
+        @include('user.session_alert')
         
 
         <section class="section dashboard">
           <div class="row">
-
             <!-- Left side columns -->
             <div class="col-lg-12">
               <div class="row">
-
-                <!-- Customers Card -->
                 
-                <div class="col-xxl-4 col-xl-12">
+
+                <!-- Jumlah Pengajuan Card -->
+                
+                <div class="col-xxl-4 col-xl-8">
                   <a href="{{ route('dashboard-admin.index') }}" style="text-decoration: none;">
                     
                     <div class="card info-card sales-card">
@@ -103,6 +103,41 @@
 
                 </div><!-- End Customers Card -->
                 
+                <!-- Status Menerima Pengajuan Card -->
+                
+                <div class="col-xxl-4 col-xl-4">
+                  <a href="" data-toggle="modal" data-target="#history" style="text-decoration: none;">
+                    
+                    <div class="card info-card sales-card">
+  
+                      <div class="card-body">
+                        <h5 class="card-title">Status</h5>
+  
+                        <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          @if($open == "Closed")
+                            <i class="fa fa-times-circle"></i>
+                          </div>
+                          <div class="ps-3 col-md-10">
+                            Tidak Menerima Pengajuan <br>
+                            <span class="text-muted small pt-2 ps-1 ">History Pengajuan</span>
+                          </div>
+                          @else
+                            <i class="fa fa-check-circle"></i>
+                          </div>
+                          <div class="ps-3 col-md-10">
+                            Menerima Pengajuan<br>
+                            <span class="text-muted small pt-2 ps-1 ">History Pengajuan</span>
+                          </div>
+                          @endif
+                        </div>
+  
+                      </div>
+                    </div>
+                  </a>
+
+
+                </div><!-- End Customers Card -->
 
                 <!-- Revenue Card -->
                 <div class="col-xxl-4 col-md-4">
@@ -115,7 +150,6 @@
                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="fa fa-eye"></i>
                         </div>
-                        
                         <div class="ps-3 col-md-10">
                           <h6>{{$dataNA}}</h6>
                           <span class="text-success small pt-1 fw-bold">{{$dataCount}}</span> <span class="text-muted small pt-2 ps-1 ">Pengajuan Mahasiswa</span>
@@ -182,6 +216,64 @@
         </section>
 
       </main><!-- End #main -->
+
+<!-- Modal ubah tanggal pengajuan-->
+  <div class="modal fade" id="history" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">History Pengajuan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form action="{{route('add-history')}}" method="POST">
+          @csrf
+          <div class="form-row">
+          <div class="form-group col-md-5">
+            <input type="number" name="year" class="form-control" placeholder="Tahun">
+          </div>
+          <div class="form-group col-md-5">
+            <select name="semester" class="form-control">
+              <option value="Genap">Genap</option>
+              <option value="Ganjil">Ganjil</option>
+            </select>
+          </div>
+          <div class="form-group col-md-5">
+            <label for="accept_since">Mulai</label>
+            <input type="date" name="accept_since" class="form-control">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="accept_until">Hingga</label>
+            <input type="date" name="accept_until" class="form-control">
+          </div>
+          <div class="form-group col-md-2">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+          </div>
+          </div>
+        </form>
+        
+          <table class="table" style="margin-top: 5px">
+            <tr>
+              <th>Periode</th>
+              <th>tanggal</th>
+            </tr>
+            @foreach($history as $row)
+            <tr>
+              <td>{{$row->year}} {{$row->semester}}</td>
+              <td>{{$row->accept_since}} {{$row->accept_until}}</td>
+            </tr>
+            @endforeach
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 <script type="text/javascript" src="/js/bootstrap.js"></script>

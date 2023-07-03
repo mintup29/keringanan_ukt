@@ -28,11 +28,10 @@ class PengajuanExport implements FromCollection, ShouldAutoSize, WithHeadings, W
         ->get();
     }
 
-    public function styles(Worksheet $sheet)
+    public function styles($sheet, $id)
     {
         $sheet->getStyle('A1')->getFont()->setBold(true);
-        $num = 5;
-        $end = 'E'.$num;
+        $end = 'E'.$id;
 
         $styleArray = array(
             'borders' => array(
