@@ -84,30 +84,46 @@ class AuthController extends Controller
     }
 
     public function registerPost(Request $request){
-        $id = DB::table('users')->InsertGetId([
-            'name'  => $request->nama,
-            'email' => $request->email,
-            'password'=> Hash::make($request->password),
-            'user_type'=> "User"
-        ]);
-        $nim = strtoupper($request->nim);
-        if(substr($nim,0,3) == "M05"){
-            $prodi = "Informatika";
-        }elseif(substr($nim,0,3) == "M05"){
-            $prodi = "Informatika Juga";
+        $check = $this->check($request->email);
+        if($check == "True"){
+            $id = DB::table('users')->InsertGetId([
+                'name'  => $request->nama,
+                'email' => $request->email,
+                'password'=> Hash::make($request->password),
+                'user_type'=> "User"
+            ]);
+            $nim = strtoupper($request->nim);
+            if(substr($nim,0,3) == "M05"){
+                $prodi = "Informatika";
+            }elseif(substr($nim,0,3) == "M05"){
+                $prodi = "Informatika Juga";
+            }else{
+                $prodi = "Bukan Informatika";
+            }
+
+            $mhs = new mahasiswa();
+            $mhs->id_user  = $id;
+            $mhs->nim      = $nim;
+            $mhs->nama     = $request->nama;
+            $mhs->prodi    = $prodi;
+            $mhs->angkatan = $request->angkatan;
+            $mhs->email    = $request->email;
+            $mhs->save();
+
+            return redirect()->route('login')->with('success', 'Akun berhasil didaftarkan');
         }else{
-            $prodi = "Bukan Informatika";
+            return back()->with('danger','E-mail sudah terdaftar');
         }
+    }
 
-        $mhs = new mahasiswa();
-        $mhs->id_user  = $id;
-        $mhs->nim      = $nim;
-        $mhs->nama     = $request->nama;
-        $mhs->prodi    = $prodi;
-        $mhs->semester  = $request->angkatan;
-        $mhs->email    = $request->email;
-        $mhs->save();
-
-        return redirect()->route('login');
+    public function check($email){
+        $check = DB::table('users')
+        ->where('email', $email)
+        ->first();
+        if(empty($check)){
+            return "True";
+        }else{
+            return "False";
+        }
     }
 }

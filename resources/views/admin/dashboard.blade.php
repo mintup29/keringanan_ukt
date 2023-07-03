@@ -262,7 +262,7 @@
             @foreach($history as $row)
             <tr>
               <td>{{$row->year}} {{$row->semester}}</td>
-              <td>{{$row->accept_since}} {{$row->accept_until}}</td>
+              <td>{{$row->accept_since}} - {{$row->accept_until}}</td>
             </tr>
             @endforeach
           </table>

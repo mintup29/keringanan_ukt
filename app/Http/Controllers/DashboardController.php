@@ -42,6 +42,7 @@ class DashboardController extends Controller
             ->get();
         return view('admin.dashboard', compact('dataCount', 'dataNA', 'dataAccepted', 'dataRejected', 'years', 'selectedYear','open', 'history'));
     }
+    
     public function addHistory(Request $request){
         DB::table('accept_dates')
         ->insert([

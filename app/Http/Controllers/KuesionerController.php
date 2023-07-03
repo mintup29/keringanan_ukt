@@ -10,6 +10,7 @@ use App\Models\Pertanyaan;
 use App\Models\Foto;
 use App\Models\Skor;
 use App\Models\User;
+use App\Http\Controllers\MhsController;
 use View;
 use Illuminate\Http\Request;
 use App\Post;
@@ -22,49 +23,54 @@ class KuesionerController extends Controller
 
     public function index()
     {
-        $pertanyaans = Pertanyaan::with('jawaban', 'skor')->get();
-        $user = Auth::user();
-        $user_id = $user->id;
-        $pertanyaanid = Pertanyaan::select('id')
-            ->get();
-        $mahasiswa = User::find($user_id)->Mahasiswa->first();
-
-        if ($mahasiswa) {
-            $id_user = $mahasiswa->id;
-            // Make use of the $id_user variable as needed
-        }
-
-        // dd($pertanyaan);
-
-        $pertanyaanId = $pertanyaanid->toArray();
-        // dd($pertanyaanId);
-
-        foreach ($pertanyaanId as $idpertanyaan) {
-            $jawabanskor[] = DB::table('jawabans')
-                ->join('pertanyaans', 'pertanyaans.id', '=', 'jawabans.pertanyaan_id')
-                ->join('skors', 'jawabans.id', '=', 'skors.jawaban_id')
-                ->where('jawabans.pertanyaan_id', '=', $idpertanyaan)
-                ->select('*')
-                // ->groupBy('jawabans.id')
+        $validation = (new MhsConrtoller)->validation();
+        if($validation == "Closed"){
+            return redirect()->route('pengajuan');
+        }else{
+            $pertanyaans = Pertanyaan::with('jawaban', 'skor')->get();
+            $user = Auth::user();
+            $user_id = $user->id;
+            $pertanyaanid = Pertanyaan::select('id')
                 ->get();
+            $mahasiswa = User::find($user_id)->Mahasiswa->first();
+
+            if ($mahasiswa) {
+                $id_user = $mahasiswa->id;
+                // Make use of the $id_user variable as needed
+            }
+
+            // dd($pertanyaan);
+
+            $pertanyaanId = $pertanyaanid->toArray();
+            // dd($pertanyaanId);
+
+            foreach ($pertanyaanId as $idpertanyaan) {
+                $jawabanskor[] = DB::table('jawabans')
+                    ->join('pertanyaans', 'pertanyaans.id', '=', 'jawabans.pertanyaan_id')
+                    ->join('skors', 'jawabans.id', '=', 'skors.jawaban_id')
+                    ->where('jawabans.pertanyaan_id', '=', $idpertanyaan)
+                    ->select('*')
+                    // ->groupBy('jawabans.id')
+                    ->get();
+            }
+
+            $jawabanskors = (object) $jawabanskor;
+
+
+            // foreach ($jawabanskor as $collection) {
+            //     foreach ($collection as $item) {
+            //         $skor = $item->skor;
+            //         dd($skor);
+            //         // Make use of the $skor variable as needed
+            //     }
+            // }
+
+            // dd($jawabanskors);
+            // dd($skor);
+            // dd($pertanyaans);
+            // return View::make('user.kuesioner');
+            return View::make('user.kuesioner')->with('pertanyaan', $pertanyaans)->with('jawabanskors', $jawabanskors)->with('mahasiswa', $id_user); //return the view with posts
         }
-
-        $jawabanskors = (object) $jawabanskor;
-
-
-        // foreach ($jawabanskor as $collection) {
-        //     foreach ($collection as $item) {
-        //         $skor = $item->skor;
-        //         dd($skor);
-        //         // Make use of the $skor variable as needed
-        //     }
-        // }
-
-        // dd($jawabanskors);
-        // dd($skor);
-        // dd($pertanyaans);
-        // return View::make('user.kuesioner');
-        return View::make('user.kuesioner')->with('pertanyaan', $pertanyaans)->with('jawabanskors', $jawabanskors)->with('mahasiswa', $id_user); //return the view with posts
     }
 
     public function store(Request $request, $id)
