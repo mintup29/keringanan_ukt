@@ -46,10 +46,6 @@ class AuthController extends Controller
         }
     }
 
-    public function cek($id){
-        echo $id;
-    }
-
     public function login(){
         return view('auth.sso');
     }

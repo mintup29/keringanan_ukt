@@ -10,7 +10,7 @@ use App\Models\Pertanyaan;
 use App\Models\Foto;
 use App\Models\Skor;
 use App\Models\User;
-use App\Http\Controllers\MhsController;
+use App\Http\Controllers\AuthController;
 use View;
 use Illuminate\Http\Request;
 use App\Post;
@@ -23,8 +23,8 @@ class KuesionerController extends Controller
 
     public function index()
     {
-        $validation = (new MhsConrtoller)->validation();
-        if($validation == "Closed"){
+        $validation = (new AuthController)->validation(Auth::id());
+        if($validation == "False"){
             return redirect()->route('pengajuan');
         }else{
             $pertanyaans = Pertanyaan::with('jawaban', 'skor')->get();
