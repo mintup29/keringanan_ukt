@@ -23,6 +23,8 @@ use App\Http\Controllers\AuthController;
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
     // Route::get('/kuesioner', [KuesionerController::class, 'index']);
 });
 
@@ -38,7 +40,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     });
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+    Route::post('/dashboard', [DashboardController::class, 'addHistory'])->name('add-history');
     Route::get('/dashboard-admin', [PengajuanMahasiswaController::class, 'index'])->name('dashboard-admin.index');
     Route::get('/dashboard-admin/export', [MhsController::class, 'export'])->name('dashboard-admin.export');
     Route::put('/dashboard-admin/{item}/update-action', [PengajuanMahasiswaController::class, 'updateAction'])->name('dashboard-admin.update-action');
@@ -58,15 +60,12 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 Route::middleware(['auth', 'isUser'])->group(function () {
     Route::get('/getPengajuan', [PengajuanMahasiswaController::class, 'index'])->name('getPengajuan');
     Route::get('/pengajuan', [MhsController::class, 'mhsDashboard'])->name('pengajuan');
+    Route::get('/pengajuan/items/{id}', [MhsController::class, 'mhsDetail'])->name('items.mhs');
     Route::get('/kuesioner', [KuesionerController::class, 'index'])->name('kuesioner');
     Route::post('/isi-kuesioner/{id}', [KuesionerController::class, 'store']);
+
     // Route::get('/kuesioner', function(){return view('user.kuesioner');})->name('kuesioner');
-    Route::get('/pengajuan_2', function () {
-        return view('user/profil');
-    });
 });
 
-Route::get('/home', function () {
-    return view('landing-page'); })->name('home');
 Route::get('/', function () {
     return view('landing-page'); });

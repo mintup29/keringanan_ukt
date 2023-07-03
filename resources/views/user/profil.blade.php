@@ -17,6 +17,15 @@
         @endforeach
     </div>
     <div class="container col-lg-7 shadow" >
+        @if($validation == "Closed")
+        <div class="alert alert-danger">
+            Pengajuan Keringanan UKT Telah Ditutup
+        </div>
+        @else
+        <div class="alert alert-primary">
+            Pengajuan Keringanan UKT Dibuka hingga {{$validation->accept_until}}
+        </div>
+        @endif
         @if(!empty($pengajuan))
         <table class="table rounded-corners">
             <tr><th>Tahun</th>
@@ -29,14 +38,14 @@
                     <td>{{ $row->tahun }}</td>
                     <td>{{ $row->semester}}</td>
                     <td>@if($row->status == "Rejected")
-                            <div class="status-p p-rejected">Processing</div>
+                            <div class="status-p p-rejected">Rejected</div>
                         @elseif($row->status == "Accepted")
                             <div class="status-p p-approved"> Accepted </div>
                         @else
                             <div class="status-p p-processing">Need Action</div>
                         @endif
                     </td>
-                    <td><button class="btn-detail">Detail</button></td>
+                    <td><a href="{{route('items.mhs', [$row->id])}}"><button class="btn-detail">Detail</button></a></td>
                 </tr>
             @endforeach
         </table>
