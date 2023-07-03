@@ -10,9 +10,12 @@ class Skor extends Model
 {
     protected $primarykey = 'id';
     protected $table = "skors";
-    protected $fillable = ['pertanyaan_id',
-                            'jawaban_id',
-                            'skor'];
+    protected $fillable = [
+        'pertanyaan_id',
+        'jawaban_id',
+        'skor',
+        'version'
+    ];
 
     /**
      * Get the jawaban that owns the Skor

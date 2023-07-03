@@ -13,7 +13,8 @@ class Jawaban extends Model
     protected $table = 'jawabans';
     protected $fillable = [
         'pertanyaan_id',
-        'jawaban'
+        'jawaban',
+        'version'
     ];
     /**
      * Get the pertanyaan that owns the Jawaban
@@ -35,7 +36,7 @@ class Jawaban extends Model
         return $this->hasOne(Skor::class);
     }
 
-    
+
     public function jawaban_mahasiswa()
     {
         return $this->belongsTo(Pertanyaan::class, 'pertanyaan_id');

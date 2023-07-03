@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Input;
 use App\Models\Jawaban;
 use App\Models\Skor;
 use App\Models\Pertanyaan;
 use Illuminate\Http\Request;
 use DB;
+use View;
 
 class SettingJawabanController extends Controller
 {
@@ -33,11 +35,11 @@ class SettingJawabanController extends Controller
     {
 
         $request->validate([
-            'pertanyaan_id'=>'required',
-            'jawaban'=>'required',
-            'skor'=>'required',
-            ]);
-        
+            'pertanyaan_id' => 'required',
+            'jawaban' => 'required',
+            'skor' => 'required',
+        ]);
+
         $id = $request->pertanyaan_id;
         $jawaban = $request->jawaban;
         $skor = $request->skor;
@@ -48,7 +50,7 @@ class SettingJawabanController extends Controller
         ]);
 
         $idjawaban = Jawaban::latest('id')->first();
-        $idjawabanlatest = $idjawaban -> id;
+        $idjawabanlatest = $idjawaban->id;
 
         $isiSkor = Skor::create([
             'pertanyaan_id' => $id,
@@ -86,20 +88,20 @@ class SettingJawabanController extends Controller
         ]);
 
         $jawaban = Jawaban::find($id);
-        $skor = Skor::find($id);
+        $skor = Skor::find($idskor);
 
-        $jawaban->toQuery()->update([
-            'jawaban'=>$request->jawaban,
-        ]);
+        // $jawaban->toQuery()->update([
+        //     'jawaban' => $request->jawaban,
+        // ]);
 
-        $skor->toQuery()->update([
-            'skor'=>$request->skor,
-        ]);
+        // $skor->toQuery()->update([
+        //     'skor' => $request->skor,
+        // ]);
 
-        // dd($skor);
+        dd($skor);
 
-        return redirect()->back()->with('success', 'Jawaban dan Skor berhasil diupdate!');
-        // return View::make('admin.dashboard_admin_setting.blade');
+        // return redirect()->back()->with('success', 'Jawaban dan Skor berhasil diupdate!');
+        return View::make('admin.dashboard_admin_setting.blade');
     }
 
     /**

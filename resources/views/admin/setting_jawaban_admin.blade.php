@@ -169,6 +169,7 @@
                   <i class="fa fa-trash" style="font-size: 20px"></i>
                 </button>  
               </td>
+
             </tr>
 
             {{-- modal konfirmasi hapus --}}

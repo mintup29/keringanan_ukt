@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,6 +17,7 @@ return new class extends Migration
             $table->foreignId('id_pertanyaan')->constrained('pertanyaans')->comment('relasi ke tabel pertanyaan')->onDelete('cascade');
             $table->foreignId('id_jawaban')->constrained('jawabans')->comment('relasi ke tabel jawaban')->onDelete('cascade');
             $table->foreignId('id_skor')->constrained('skors')->comment('relasi ke tabel skor')->onDelete('cascade');
+            $table->integer('version');
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pertanyaan;
 use App\Models\Jawaban;
+use App\Models\PertanyaanHistory;
 use Illuminate\Http\Request;
 use View;
 use Redirect;
@@ -36,13 +37,11 @@ class PertanyaanController extends Controller
     public function store(Request $request)
     {
         $request->validate(['pertanyaan' => 'required|min:3',]);
+        $pertanyaan = $request->input('pertanyaan');
 
-        $pertanyaan = new Pertanyaan;
-
-        //objek->namakolom = request->input('nama_input')
-        $pertanyaan->pertanyaan = $request->input('pertanyaan');
-
-        $pertanyaan->save();
+        Pertanyaan::create([
+            'pertanyaan' => $pertanyaan,
+        ]);
 
         return redirect()->back()->with('success', 'Pertanyaan berhasil ditambahkan');
     }

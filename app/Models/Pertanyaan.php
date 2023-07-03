@@ -10,7 +10,7 @@ class Pertanyaan extends Model
 {
     protected $primarykey = 'id';
     protected $table = 'pertanyaans';
-    protected $fillable = ['pertanyaan'];
+    protected $fillable = ['pertanyaan', 'version'];
 
     /**
      * Get all of the jawaban for the Pertanyaan
