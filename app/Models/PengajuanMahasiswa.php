@@ -28,6 +28,11 @@ class PengajuanMahasiswa extends Model
         return $this->hasMany(JawabanMahasiswa::class, 'id_pengajuan_mahasiswa');
     }
 
+    public function foto()
+    {
+        return $this->hasMany(Foto::class, 'id_pengajuan');
+    }
+
     // public function jawaban()
     // {
     //     return $this->belongsTo(Jawaban::class, 'id_jawaban');

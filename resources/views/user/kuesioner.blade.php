@@ -20,8 +20,8 @@
                 <div class="input-group col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto">
                     <input type="text" name="tahun" class="form-control text-center" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{ now()->year }}" readonly>
                 </div>
-                <select name='semester' id="semester" class="form-select shadow col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto" aria-label="Default select example">
-                    <option selected>Pilih Semester</option>
+                <select name='semester' id="semester" class="form-select shadow col-lg-2 col-sm-4 mx-lg-auto mx-sm-auto" aria-label="Default select example" required>
+                    <option value="">Pilih Semester</option>
                     <option value="Ganjil-1">Ganjil - 1</option>
                     <option value="Genap-2">Genap - 2</option>
                     <option value="Ganjil-3">Ganjil - 3</option>
