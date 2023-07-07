@@ -88,17 +88,17 @@ class SettingJawabanController extends Controller
         ]);
 
         $jawaban = Jawaban::find($id);
-        $skor = Skor::find($idskor);
+        $skor = Skor::find($id);
 
-        // $jawaban->toQuery()->update([
-        //     'jawaban' => $request->jawaban,
-        // ]);
+        $jawaban->toQuery()->update([
+            'jawaban' => $request->jawaban,
+        ]);
 
-        // $skor->toQuery()->update([
-        //     'skor' => $request->skor,
-        // ]);
+        $skor->toQuery()->update([
+            'skor' => $request->skor,
+        ]);
 
-        dd($skor);
+        // dd($request);
 
         // return redirect()->back()->with('success', 'Jawaban dan Skor berhasil diupdate!');
         return View::make('admin.dashboard_admin_setting.blade');
