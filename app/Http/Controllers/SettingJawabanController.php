@@ -80,7 +80,7 @@ class SettingJawabanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jawaban $id, Skor $idskor)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'jawaban' => 'required',
