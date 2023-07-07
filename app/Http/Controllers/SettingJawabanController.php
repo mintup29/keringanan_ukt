@@ -78,7 +78,7 @@ class SettingJawabanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jawaban $id, Skor $idskor)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'jawaban' => 'required',
@@ -88,13 +88,11 @@ class SettingJawabanController extends Controller
         $jawaban = Jawaban::find($id);
         $skor = Skor::find($id);
 
-        $jawaban->toQuery()->update([
-            'jawaban'=>$request->jawaban,
-        ]);
+        $jawaban->jawaban = $request->jawaban;
+        $jawaban->save();
 
-        $skor->toQuery()->update([
-            'skor'=>$request->skor,
-        ]);
+        $skor->skor = $request->skor;
+        $skor->save();
 
         // dd($skor);
 
