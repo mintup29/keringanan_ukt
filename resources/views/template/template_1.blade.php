@@ -22,45 +22,45 @@
 <script type="text/javascript" src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    $(document).ready(function() {
-        const form = $('form');
-        const submitButton = $('#tombol_simpan');
+    // $(document).ready(function() {
+    //     const form = $('form');
+    //     const submitButton = $('#tombol_simpan');
 
-        // Disable the submit button initially
-        submitButton.prop('disabled', true);
+    //     // Disable the submit button initially
+    //     submitButton.prop('disabled', true);
 
-        // Add an event listener to the form inputs to check for changes
-        form.on('input', function() {
-            // Check if all form fields are filled
-            const allFieldsFilled = form.find('input').toArray().every(function(element) {
-                return $(element).val().trim() !== '';
-            });
+    //     // Add an event listener to the form inputs to check for changes
+    //     form.on('input', function() {
+    //         // Check if all form fields are filled
+    //         const allFieldsFilled = form.find('input').toArray().every(function(element) {
+    //             return $(element).val().trim() !== '';
+    //         });
 
-            // Enable or disable the submit button based on the form validation
-            submitButton.prop('disabled', !allFieldsFilled);
-        });
+    //         // Enable or disable the submit button based on the form validation
+    //         submitButton.prop('disabled', !allFieldsFilled);
+    //     });
 
-        // Add an event listener to the submit button
-        submitButton.on('click', function(e) {
-            e.preventDefault();
-            const href = $(this).attr('href');
+    //     // Add an event listener to the submit button
+    //     submitButton.on('click', function(e) {
+    //         e.preventDefault();
+    //         const href = $(this).attr('href');
 
-            Swal.fire({
-                title: 'Apakah anda yakin?',
-                text: 'Data akan disimpan',
-                icon: 'info',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Simpan'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Submit the form directly after confirmation
-                    form.submit();
-                }
-            });
-        });
-    });
+    //         Swal.fire({
+    //             title: 'Apakah anda yakin?',
+    //             text: 'Data akan disimpan',
+    //             icon: 'info',
+    //             showCancelButton: true,
+    //             confirmButtonColor: '#3085d6',
+    //             cancelButtonColor: '#d33',
+    //             confirmButtonText: 'Simpan'
+    //         }).then((result) => {
+    //             if (result.isConfirmed) {
+    //                 // Submit the form directly after confirmation
+    //                 form.submit();
+    //             }
+    //         });
+    //     });
+    // });
 </script>
 
 @if (session('success'))

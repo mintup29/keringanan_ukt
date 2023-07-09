@@ -23,7 +23,7 @@ class AdminMiddleware
             return redirect('/pengajuan');
         }
         if (empty(Auth::user())){
-            return redirect('/home');
+            return redirect('/kuesioner');
         }
     }
 }

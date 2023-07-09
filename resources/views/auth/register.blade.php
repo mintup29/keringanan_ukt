@@ -25,6 +25,7 @@
             Masukkan data diri anda!
         </div>
         <div class="register-box-body" style="height:540px;">
+        @include('user.session_alert')
             <form action="{{route('register')}}" method="POST">
                 @csrf
                 <div class="form-group">

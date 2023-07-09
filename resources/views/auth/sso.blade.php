@@ -63,6 +63,7 @@
                                     Masukkan email dan password anda!
                             </div>
             <div class="login-box-body">
+            @include('user.session_alert')
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
                     <div class="form-group">

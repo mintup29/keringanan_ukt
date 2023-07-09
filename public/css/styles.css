@@ -11089,8 +11089,15 @@ body {
   max-width: 20rem;
   font-size: 1rem;
 }
+
+@media (max-width: 400px) {
+  .masthead h1, .masthead .h1, .h1{
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+}
 @media (min-width: 768px) {
-  .masthead h1, .masthead .h1 {
+  .masthead h1, .masthead .h1, .h1{
     font-size: 3.5rem;
     line-height: 4rem;
   }
@@ -11100,12 +11107,12 @@ body {
     height: 100vh;
     padding: 0;
   }
-  .masthead h1, .masthead .h1 {
+  .masthead h1, .masthead .h1, .h1{
     font-size: 4rem;
     line-height: 6.5rem;
     letter-spacing: 0.8rem;
   }
-  .masthead h2, .masthead .h2 {
+  .masthead h2, .masthead .h2 .h2{
     max-width: 30rem;
     font-size: 1.25rem;
   }

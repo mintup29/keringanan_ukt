@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="row">
-                <button class="btn btn-primary rounded-4 col-lg-2 col-sm-4 offset-lg-8 offset-sm-4 my-3" id="tombol_simpan" type="submit" style="font-style: Poppins; font-weight:bold;">Submit</button>
+                <button class="btn btn-primary rounded-4 col-lg-2 col-sm-4 offset-lg-8 offset-sm-4 my-3" type="submit" style="font-style: Poppins; font-weight:bold;">Submit</button>
             </div>
         </form>
     </div>

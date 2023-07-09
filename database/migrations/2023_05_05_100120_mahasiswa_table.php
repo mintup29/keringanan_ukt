@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nim');
             $table->string('nama');
             $table->string('prodi');
-            $table->integer('semester');
+            $table->integer('angkatan');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
