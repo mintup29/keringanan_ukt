@@ -31,6 +31,14 @@
                 <td>{{ $items['jawaban']['jawaban'] }}</td>
             </tr>
             @endforeach
+            @foreach($item->foto as $foto)
+                <tr>
+                    <td>Foto Rumah: </td>
+                    <td>
+                        <img src="{{ asset('storage/' . $foto['foto']) }}" alt="Foto Rumah" width="100%" height="100%">
+                    </td>
+                </tr>
+            @endforeach
         </table>
         <div class="mt-5 mb-4">
             @if ($item->status == 'Need Action')

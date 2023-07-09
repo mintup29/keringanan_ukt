@@ -160,7 +160,7 @@ class KuesionerController extends Controller
         PengajuanMahasiswa::where('id', $idSubmission)->update(['skor_total' => $scoreTotal]);
 
         $percentage = '';
-        if ($scoreTotal >= 40 && $scoreTotal <= 54) {
+        if ($scoreTotal >= 40) {
             $percentage = '30%';
         } elseif ($scoreTotal >= 31 && $scoreTotal < 40) {
             $percentage = '20%';
